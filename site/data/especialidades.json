@@ -1,0 +1,13 @@
+{
+  "versao": "1.0",
+  "especialidades": [
+    { "slug": "cardiologia",   "nome": "Cardiologia",             "icone": "❤️",  "count": "1 profissional" },
+    { "slug": "dermatologia",  "nome": "Dermatologia",            "icone": "🌿",  "count": "1 profissional" },
+    { "slug": "pediatria",     "nome": "Pediatria",               "icone": "👶",  "count": "1 profissional" },
+    { "slug": "ortopedia",     "nome": "Ortopedia",               "icone": "🦴",  "count": "1 profissional" },
+    { "slug": "psiquiatria",   "nome": "Psiquiatria",             "icone": "🧠",  "count": "1 profissional" },
+    { "slug": "clinica-geral", "nome": "Clínica Geral",           "icone": "🩺",  "count": "" },
+    { "slug": "ginecologia",   "nome": "Ginecologia e Obstetrícia","icone": "🌸", "count": "" },
+    { "slug": "neurologia",    "nome": "Neurologia",              "icone": "⚡",  "count": "" }
+  ]
+}

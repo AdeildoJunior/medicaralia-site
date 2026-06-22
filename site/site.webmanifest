@@ -1,0 +1,10 @@
+{
+  "name": "Medicaralia",
+  "short_name": "Medicaralia",
+  "description": "Plataforma acessível para profissionais de saúde em início de carreira ganharem visibilidade.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#5b3df5",
+  "lang": "pt-BR"
+}

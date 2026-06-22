@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medicaralia — Encontre profissionais de saúde perto de você</title>
+  <meta name="description" content="Diretório de médicos e profissionais de saúde. Busque por especialidade, cidade e bairro. Contato direto pelo WhatsApp." />
+  <link rel="canonical" href="https://medicaralia.com.br/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Medicaralia",
+    "url": "https://medicaralia.com.br/",
+    "description": "Diretório de profissionais de saúde. Busque por especialidade, cidade e bairro.",
+    "inLanguage": "pt-BR",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://medicaralia.com.br/profissionais/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    /* === Medicaralia: Design System ===
+       Paleta: azul-médico (#1a4f72) + verde-saúde (#27ae7a)
+    */
+    :root {
+      --mk-primary:      #1a4f72;
+      --mk-primary-dark: #0f3352;
+      --mk-accent:       #27ae7a;
+      --mk-accent-dark:  #1d8c60;
+      --mk-accent-soft:  #e8f8f2;
+      --mk-bg:           #f7faf9;
+      --mk-bg-strong:    #e4f4ee;
+      --mk-text:         #1a3344;
+      --mk-muted:        #5c7a8a;
+      --mk-line:         rgba(26,79,114,0.10);
+      --mk-wa:           #25D366;
+      --mk-radius-sm:    10px;
+      --mk-radius-md:    16px;
+      --mk-radius-lg:    22px;
+      --mk-radius-xl:    32px;
+      --mk-shadow-sm:    0 4px 14px rgba(26,79,114,0.08);
+      --mk-shadow-md:    0 10px 28px rgba(26,79,114,0.10);
+      --mk-shadow-lg:    0 20px 50px rgba(26,79,114,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Arial, sans-serif;
+      color: var(--mk-text);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .mk-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* === Botões === */
+    .mk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+      font-family: inherit;
+    }
+    .mk-btn-primary {
+      background: linear-gradient(135deg, var(--mk-accent), var(--mk-accent-dark));
+      color: #fff;
+      padding: 10px 22px;
+      box-shadow: 0 8px 20px rgba(39,174,122,0.28);
+    }
+    .mk-btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .mk-btn-ghost {
+      background: transparent;
+      color: var(--mk-primary);
+      border: 1.5px solid var(--mk-line);
+      padding: 9px 18px;
+    }
+    .mk-btn-ghost:hover { background: var(--mk-bg); border-color: rgba(39,174,122,.35); }
+    .mk-btn-wa {
+      background: var(--mk-wa);
+      color: #fff;
+      padding: 10px 22px;
+      box-shadow: 0 8px 20px rgba(37,211,102,0.25);
+    }
+    .mk-btn-wa:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+    /* === Header === */
+    .mk-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--mk-line);
+    }
+    .mk-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 0;
+    }
+    .mk-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--mk-primary);
+      letter-spacing: -0.03em;
+    }
+    .mk-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--mk-accent), var(--mk-primary));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+    .mk-logo-accent { color: var(--mk-accent); }
+    .mk-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .mk-nav-link {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      color: var(--mk-muted);
+      font-weight: 500;
+      transition: color 0.15s, background 0.15s;
+    }
+    .mk-nav-link:hover { color: var(--mk-primary); background: var(--mk-bg); }
+    @media (max-width: 860px) { .mk-nav { display: none; } }
+
+    /* === Hero === */
+    .mk-hero {
+      background: linear-gradient(160deg, #edfaf4 0%, #fff 55%);
+      padding: 60px 0 52px;
+    }
+    .mk-hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .mk-hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--mk-accent-soft);
+      color: var(--mk-accent-dark);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .mk-hero-kicker::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--mk-accent);
+    }
+    .mk-hero-title {
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--mk-primary-dark);
+      margin: 0 0 16px;
+    }
+    .mk-hero-title em {
+      font-style: normal;
+      color: var(--mk-accent);
+    }
+    .mk-hero-sub {
+      font-size: 1.05rem;
+      color: var(--mk-muted);
+      line-height: 1.65;
+      max-width: 500px;
+      margin: 0 0 28px;
+    }
+
+    /* Caixa de busca */
+    .mk-search-box {
+      background: #fff;
+      border-radius: var(--mk-radius-lg);
+      box-shadow: var(--mk-shadow-md);
+      padding: 20px 22px;
+      border: 1px solid var(--mk-line);
+    }
+    .mk-search-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--mk-muted);
+      margin-bottom: 12px;
+    }
+    .mk-search-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+    .mk-search-field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--mk-muted);
+      margin-bottom: 5px;
+    }
+    .mk-search-field select,
+    .mk-search-field input {
+      width: 100%;
+      border: 1.5px solid var(--mk-line);
+      border-radius: var(--mk-radius-sm);
+      padding: 9px 12px;
+      font-size: 0.93rem;
+      color: var(--mk-text);
+      background: var(--mk-bg);
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%235c7a8a' d='M1 1l5 5 5-5'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+    .mk-search-field input {
+      background-image: none;
+      padding-right: 12px;
+    }
+    .mk-search-field select:focus,
+    .mk-search-field input:focus {
+      border-color: var(--mk-accent);
+      background-color: #fff;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2327ae7a' d='M1 1l5 5 5-5'/></svg>");
+    }
+    .mk-search-hint {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--mk-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .mk-search-hint a {
+      color: var(--mk-accent-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+      transition: color 0.12s;
+    }
+    .mk-search-hint a:hover { color: var(--mk-accent); }
+
+    /* Cards laterais de stats */
+    .mk-hero-aside { display: grid; gap: 14px; }
+    .mk-stat-card {
+      background: #fff;
+      border-radius: var(--mk-radius-md);
+      border: 1.5px solid var(--mk-line);
+      box-shadow: var(--mk-shadow-sm);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mk-stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--mk-accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex: 0 0 44px;
+    }
+    .mk-stat-label { font-size: 0.78rem; color: var(--mk-muted); margin-bottom: 2px; }
+    .mk-stat-value { font-size: 1.15rem; font-weight: 800; color: var(--mk-primary-dark); }
+    .mk-hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .mk-hero-cta-note { font-size: 0.78rem; color: var(--mk-muted); }
+
+    @media (max-width: 860px) {
+      .mk-hero { padding: 36px 0 32px; }
+      .mk-hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .mk-search-row { grid-template-columns: 1fr 1fr; }
+      .mk-search-row .mk-btn { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .mk-search-row { grid-template-columns: 1fr; }
+      .mk-search-row .mk-btn { grid-column: unset; }
+    }
+
+    /* === Seções === */
+    .mk-section { padding: 56px 0; }
+    .mk-section--alt { background: var(--mk-bg); }
+    .mk-section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+    .mk-section-kicker {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--mk-accent-dark);
+      margin-bottom: 8px;
+    }
+    .mk-section-title {
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--mk-primary-dark);
+      margin: 0 0 10px;
+    }
+    .mk-section-sub {
+      font-size: 0.97rem;
+      color: var(--mk-muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .mk-text-center { text-align: center; }
+    .mk-mt-24 { margin-top: 24px; }
+    .mk-mt-32 { margin-top: 32px; }
+
+    /* === Grid de especialidades === */
+    .mk-esp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .mk-esp-card {
+      background: #fff;
+      border: 1.5px solid var(--mk-line);
+      border-radius: var(--mk-radius-md);
+      padding: 20px 16px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--mk-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    }
+    .mk-esp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--mk-shadow-md);
+      border-color: rgba(39,174,122,0.35);
+    }
+    .mk-esp-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: var(--mk-accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+    }
+    .mk-esp-name { font-size: 0.88rem; font-weight: 700; color: var(--mk-primary-dark); }
+    .mk-esp-count { font-size: 0.72rem; color: var(--mk-muted); }
+
+    @media (max-width: 860px) { .mk-esp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .mk-esp-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* === Grid de profissionais === */
+    .mk-prof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .mk-prof-card {
+      background: #fff;
+      border: 1.5px solid var(--mk-line);
+      border-radius: var(--mk-radius-lg);
+      padding: 20px;
+      box-shadow: var(--mk-shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .mk-prof-card:hover { transform: translateY(-2px); box-shadow: var(--mk-shadow-md); }
+    .mk-prof-header { display: flex; align-items: flex-start; gap: 14px; }
+    .mk-prof-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--mk-accent-soft), var(--mk-bg));
+      border: 1.5px solid var(--mk-line);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      flex: 0 0 52px;
+    }
+    .mk-prof-name { font-size: 1rem; font-weight: 800; color: var(--mk-primary-dark); margin: 0 0 2px; }
+    .mk-prof-esp { font-size: 0.82rem; color: var(--mk-accent-dark); font-weight: 600; margin-bottom: 3px; }
+    .mk-prof-local { font-size: 0.78rem; color: var(--mk-muted); }
+    .mk-prof-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mk-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--mk-bg);
+      color: var(--mk-muted);
+      border: 1px solid var(--mk-line);
+    }
+    .mk-tag--green {
+      background: var(--mk-accent-soft);
+      color: var(--mk-accent-dark);
+      border-color: rgba(39,174,122,0.2);
+    }
+    .mk-prof-footer { margin-top: auto; display: flex; gap: 8px; }
+    .mk-prof-footer .mk-btn { flex: 1; font-size: 0.82rem; padding: 8px 14px; }
+
+    @media (max-width: 860px) { .mk-prof-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .mk-prof-grid { grid-template-columns: 1fr; } }
+
+    /* === Como funciona === */
+    .mk-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .mk-step {
+      text-align: center;
+      padding: 28px 22px;
+      background: #fff;
+      border-radius: var(--mk-radius-md);
+      border: 1.5px solid var(--mk-line);
+    }
+    .mk-step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mk-accent), var(--mk-accent-dark));
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+    }
+    .mk-step h3 { font-size: 1rem; font-weight: 800; color: var(--mk-primary-dark); margin: 0 0 8px; }
+    .mk-step p { font-size: 0.9rem; color: var(--mk-muted); line-height: 1.55; margin: 0; }
+    @media (max-width: 720px) { .mk-steps-grid { grid-template-columns: 1fr; } }
+
+    /* === Banner para profissionais === */
+    .mk-pro-banner {
+      border-radius: var(--mk-radius-xl);
+      background: linear-gradient(135deg, var(--mk-primary-dark) 0%, #1a4f72 100%);
+      color: #fff;
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .mk-pro-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(39,174,122,0.20);
+      color: #7fffd4;
+      font-size: 0.70rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .mk-pro-banner h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+    .mk-pro-banner > div > p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.82);
+      margin: 0 0 20px;
+    }
+    .mk-pro-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+      display: grid;
+      gap: 9px;
+    }
+    .mk-pro-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.4;
+    }
+    .mk-pro-list li::before {
+      content: "✓";
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(39,174,122,0.30);
+      color: #7fffd4;
+      font-size: 0.72rem;
+      font-weight: 800;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 20px;
+      margin-top: 1px;
+    }
+    .mk-pro-note {
+      margin-top: 10px;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.48);
+    }
+    .mk-pro-visual {
+      background: rgba(255,255,255,0.07);
+      border-radius: var(--mk-radius-lg);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 24px 22px;
+    }
+    .mk-mini-profile { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .mk-mini-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.14);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+    }
+    .mk-mini-name { font-weight: 800; font-size: 1rem; margin-bottom: 2px; }
+    .mk-mini-esp { font-size: 0.80rem; color: rgba(255,255,255,0.65); }
+    .mk-mini-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mk-mini-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.70rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.80);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+    .mk-mini-tag--green { background: rgba(39,174,122,0.25); color: #7fffd4; border-color: rgba(39,174,122,0.3); }
+    .mk-pro-visual-note {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+    @media (max-width: 860px) {
+      .mk-pro-banner { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; }
+    }
+
+    /* === FAQ === */
+    .mk-faq { max-width: 720px; margin: 0 auto; }
+    .mk-faq-item { border-bottom: 1px solid var(--mk-line); }
+    .mk-faq-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--mk-primary-dark);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+    .mk-faq-btn:hover { color: var(--mk-accent-dark); }
+    .mk-faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--mk-accent-soft);
+      color: var(--mk-accent-dark);
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      flex: 0 0 24px;
+      transition: transform 0.22s;
+    }
+    .mk-faq-item.is-open .mk-faq-icon { transform: rotate(45deg); }
+    .mk-faq-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.30s ease;
+    }
+    .mk-faq-item.is-open .mk-faq-body { max-height: 320px; }
+    .mk-faq-body-inner {
+      padding: 0 0 18px;
+      font-size: 0.92rem;
+      color: var(--mk-muted);
+      line-height: 1.65;
+    }
+
+    /* === Rodapé === */
+    .mk-footer {
+      background: var(--mk-primary-dark);
+      color: rgba(255,255,255,0.72);
+      padding: 48px 0 28px;
+    }
+    .mk-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .mk-footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .mk-footer-logo .mk-logo-icon {
+      background: linear-gradient(135deg, var(--mk-accent), var(--mk-accent-dark));
+    }
+    .mk-footer-desc {
+      font-size: 0.87rem;
+      line-height: 1.62;
+      max-width: 340px;
+      margin: 0 0 12px;
+    }
+    .mk-footer-aviso {
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.38);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .mk-footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: rgba(255,255,255,0.45);
+      margin: 0 0 14px;
+    }
+    .mk-footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+    .mk-footer-links a {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.15s;
+    }
+    .mk-footer-links a:hover { color: var(--mk-accent); }
+    .mk-footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+    }
+    @media (max-width: 720px) {
+      .mk-footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .mk-footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* === WhatsApp FAB === */
+    .mk-wa-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--mk-wa);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .mk-wa-fab:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+    .mk-wa-fab svg { width: 28px; height: 28px; }
+  </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="mk-header">
+  <div class="mk-wrap">
+    <div class="mk-header-inner">
+      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+        <div class="mk-logo-icon" aria-hidden="true">M</div>
+        Medic<span class="mk-logo-accent">aralia</span>
+      </a>
+      <nav class="mk-nav" aria-label="Navegação principal">
+        <a href="/" class="mk-nav-link">Início</a>
+        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+      </nav>
+      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="mk-hero" aria-labelledby="hero-title">
+  <div class="mk-wrap">
+    <div class="mk-hero-inner">
+
+      <div>
+        <div class="mk-hero-kicker">Plataforma de saúde</div>
+        <h1 class="mk-hero-title" id="hero-title">
+          Seu começo na saúde<br><em>merece ser visto</em>
+        </h1>
+        <p class="mk-hero-sub">
+          Encontre médicos e profissionais de saúde por especialidade, cidade e bairro.
+          Contato direto, sem intermediários.
+        </p>
+
+        <div class="mk-search-box" role="search" aria-label="Buscar profissional">
+          <div class="mk-search-label">Buscar profissional</div>
+          <div class="mk-search-row">
+            <div class="mk-search-field">
+              <label for="busca-esp">Especialidade</label>
+              <select id="busca-esp" aria-label="Selecionar especialidade">
+                <option value="">Todas as especialidades</option>
+              </select>
+            </div>
+            <div class="mk-search-field">
+              <label for="busca-cidade">Cidade</label>
+              <select id="busca-cidade" aria-label="Selecionar cidade">
+                <option value="">Todas as cidades</option>
+              </select>
+            </div>
+            <button id="btn-buscar" class="mk-btn mk-btn-primary" type="button" aria-label="Buscar profissionais">
+              Buscar
+            </button>
+          </div>
+          <div class="mk-search-hint" aria-label="Sugestões rápidas">
+            Exemplos:
+            <a href="/profissionais/?esp=cardiologia">Cardiologia</a>
+            <a href="/profissionais/?esp=pediatria">Pediatria</a>
+            <a href="/profissionais/?esp=dermatologia">Dermatologia</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estatísticas -->
+      <div class="mk-hero-aside" aria-label="Números da plataforma">
+        <div class="mk-stat-card">
+          <div class="mk-stat-icon" aria-hidden="true">🩺</div>
+          <div>
+            <div class="mk-stat-label">Profissionais cadastrados</div>
+            <div class="mk-stat-value" id="stat-prof">—</div>
+          </div>
+        </div>
+        <div class="mk-stat-card">
+          <div class="mk-stat-icon" aria-hidden="true">🏥</div>
+          <div>
+            <div class="mk-stat-label">Especialidades disponíveis</div>
+            <div class="mk-stat-value" id="stat-esp">—</div>
+          </div>
+        </div>
+        <div class="mk-stat-card">
+          <div class="mk-stat-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="mk-stat-label">Cidades atendidas</div>
+            <div class="mk-stat-value" id="stat-cid">—</div>
+          </div>
+        </div>
+        <div class="mk-hero-cta">
+          <a href="/cadastro/" class="mk-btn mk-btn-primary">Quero me cadastrar</a>
+          <span class="mk-hero-cta-note">Gratuito no lançamento</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Especialidades ===== -->
+<section class="mk-section" aria-labelledby="esp-title">
+  <div class="mk-wrap">
+    <div class="mk-section-head">
+      <div class="mk-section-kicker">Especialidades</div>
+      <h2 class="mk-section-title" id="esp-title">Busque pela área de saúde</h2>
+      <p class="mk-section-sub">Clique em uma especialidade para ver os profissionais disponíveis na sua região.</p>
+    </div>
+    <div class="mk-esp-grid" id="esp-grid" aria-label="Lista de especialidades">
+      <!-- Renderizado via JS a partir de data/especialidades.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== Profissionais em destaque ===== -->
+<section class="mk-section mk-section--alt" aria-labelledby="prof-title">
+  <div class="mk-wrap">
+    <div class="mk-section-head">
+      <div class="mk-section-kicker">Profissionais</div>
+      <h2 class="mk-section-title" id="prof-title">Conheça nossos profissionais</h2>
+      <p class="mk-section-sub">Contato direto pelo WhatsApp. Sem taxas, sem intermediários.</p>
+    </div>
+    <div class="mk-prof-grid" id="prof-grid">
+      <!-- Renderizado via JS a partir de data/profissionais.json -->
+    </div>
+    <div class="mk-text-center mk-mt-32">
+      <a href="/profissionais/" class="mk-btn mk-btn-ghost">Ver todos os profissionais</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Como funciona — pacientes ===== -->
+<section class="mk-section" aria-labelledby="como-title">
+  <div class="mk-wrap">
+    <div class="mk-section-head">
+      <div class="mk-section-kicker">Para pacientes</div>
+      <h2 class="mk-section-title" id="como-title">Como encontrar seu profissional</h2>
+      <p class="mk-section-sub">Simples, direto e sem cadastro obrigatório para pacientes.</p>
+    </div>
+    <div class="mk-steps-grid">
+      <div class="mk-step">
+        <div class="mk-step-num" aria-hidden="true">1</div>
+        <h3>Busque por especialidade</h3>
+        <p>Informe a especialidade que precisa e a sua cidade ou bairro para filtrar os resultados.</p>
+      </div>
+      <div class="mk-step">
+        <div class="mk-step-num" aria-hidden="true">2</div>
+        <h3>Escolha o profissional</h3>
+        <p>Veja o perfil completo com especialidade, formação, serviços oferecidos e localização.</p>
+      </div>
+      <div class="mk-step">
+        <div class="mk-step-num" aria-hidden="true">3</div>
+        <h3>Entre em contato direto</h3>
+        <p>Use o botão de WhatsApp para falar diretamente com o profissional e agendar sua consulta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Para profissionais ===== -->
+<section class="mk-section mk-section--alt" aria-labelledby="pro-title">
+  <div class="mk-wrap">
+    <div class="mk-pro-banner">
+      <div>
+        <div class="mk-pro-kicker">Para profissionais de saúde</div>
+        <h2 id="pro-title">Visibilidade gratuita para quem está começando</h2>
+        <p>
+          Você acabou de se formar ou se especializar e ainda não tem uma base de pacientes?
+          A Medicaralia te coloca no mapa — sem mensalidades caras e sem burocracia.
+        </p>
+        <ul class="mk-pro-list">
+          <li>Página de perfil com sua especialidade, bairro e serviços</li>
+          <li>Botão de WhatsApp para pacientes entrarem em contato direto</li>
+          <li>Cadastro gratuito no lançamento — sem taxa de adesão</li>
+          <li>Você aparece nas buscas por especialidade e cidade</li>
+          <li>Seus dados são protegidos e você controla o que é exibido</li>
+        </ul>
+        <a href="/cadastro/" class="mk-btn mk-btn-wa">
+          Quero me cadastrar gratuitamente
+        </a>
+        <p class="mk-pro-note">Cadastro 100% gratuito durante o período de lançamento.</p>
+      </div>
+
+      <div class="mk-pro-visual" aria-hidden="true">
+        <div class="mk-mini-profile">
+          <div class="mk-mini-avatar">👩‍⚕️</div>
+          <div>
+            <div class="mk-mini-name">Dra. Ana Beatriz</div>
+            <div class="mk-mini-esp">Cardiologista · Botafogo, RJ</div>
+          </div>
+        </div>
+        <div class="mk-mini-tags">
+          <span class="mk-mini-tag mk-mini-tag--green">✓ Perfil ativo</span>
+          <span class="mk-mini-tag">Consulta</span>
+          <span class="mk-mini-tag">ECG</span>
+          <span class="mk-mini-tag">Prevenção cardiovascular</span>
+        </div>
+        <p class="mk-pro-visual-note">Assim seu perfil aparece para os pacientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="mk-section" aria-labelledby="faq-title">
+  <div class="mk-wrap">
+    <div class="mk-section-head">
+      <div class="mk-section-kicker">Dúvidas</div>
+      <h2 class="mk-section-title" id="faq-title">Perguntas frequentes</h2>
+    </div>
+    <div class="mk-faq">
+
+      <div class="mk-faq-item">
+        <button class="mk-faq-btn" aria-expanded="false">
+          O cadastro para profissionais é gratuito?
+          <span class="mk-faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="mk-faq-body" role="region">
+          <div class="mk-faq-body-inner">
+            Sim. Durante o período de lançamento, o cadastro é totalmente gratuito.
+            No futuro poderemos oferecer planos com recursos adicionais, mas o cadastro básico continuará acessível.
+          </div>
+        </div>
+      </div>
+
+      <div class="mk-faq-item">
+        <button class="mk-faq-btn" aria-expanded="false">
+          Como os pacientes entram em contato com o profissional?
+          <span class="mk-faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="mk-faq-body" role="region">
+          <div class="mk-faq-body-inner">
+            Pelo WhatsApp. O perfil de cada profissional tem um botão direto para conversa.
+            Não há intermediário — o contato é feito diretamente entre paciente e profissional.
+          </div>
+        </div>
+      </div>
+
+      <div class="mk-faq-item">
+        <button class="mk-faq-btn" aria-expanded="false">
+          As informações exibidas respeitam as normas do CFM?
+          <span class="mk-faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="mk-faq-body" role="region">
+          <div class="mk-faq-body-inner">
+            Sim. Exibimos apenas informações informativas: especialidade, cidade, formação, serviços e canais de contato.
+            Não são feitas promessas de resultados, rankings de qualidade ou comparações entre profissionais.
+          </div>
+        </div>
+      </div>
+
+      <div class="mk-faq-item">
+        <button class="mk-faq-btn" aria-expanded="false">
+          Meus dados ficam protegidos?
+          <span class="mk-faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="mk-faq-body" role="region">
+          <div class="mk-faq-body-inner">
+            Coletamos apenas os dados necessários para montar o perfil público, com seu consentimento expresso.
+            Não compartilhamos dados pessoais com terceiros. Agimos em conformidade com a LGPD.
+          </div>
+        </div>
+      </div>
+
+      <div class="mk-faq-item">
+        <button class="mk-faq-btn" aria-expanded="false">
+          A Medicaralia é um convênio médico?
+          <span class="mk-faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="mk-faq-body" role="region">
+          <div class="mk-faq-body-inner">
+            Não. Somos um diretório e plataforma de visibilidade para profissionais de saúde.
+            Não intermediamos consultas, não definimos preços e não gerenciamos agendamentos diretamente.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Rodapé ===== -->
+<footer class="mk-footer" aria-label="Rodapé Medicaralia">
+  <div class="mk-wrap">
+    <div class="mk-footer-grid">
+      <div>
+        <div class="mk-footer-logo">
+          <div class="mk-logo-icon" aria-hidden="true">M</div>
+          Medic<span class="mk-logo-accent">aralia</span>
+        </div>
+        <p class="mk-footer-desc">
+          Plataforma de visibilidade para profissionais de saúde em início de carreira.
+          Busca por especialidade, cidade e bairro. Contato direto pelo WhatsApp.
+        </p>
+        <p class="mk-footer-aviso">
+          As informações apresentadas têm caráter informativo e não substituem consulta médica profissional.
+        </p>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Navegação</h4>
+        <ul class="mk-footer-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/profissionais/">Profissionais</a></li>
+          <li><a href="/cadastro/">Cadastre-se</a></li>
+          <li><a href="/sobre/">Sobre</a></li>
+        </ul>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Institucional</h4>
+        <ul class="mk-footer-links">
+          <li><a href="/privacidade/">Política de Privacidade</a></li>
+          <li><a href="/termos/">Termos de Uso</a></li>
+          <li><a href="mailto:contato@medicaralia.com.br">contato@medicaralia.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mk-footer-bottom">
+      <span>© 2026 Medicaralia. Todos os direitos reservados.</span>
+      <span>medicaralia.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== WhatsApp FAB ===== -->
+<!-- TODO: substituir o número do WhatsApp pelo número real da Medicaralia -->
+<a href="https://wa.me/55?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20me%20cadastrar%20na%20Medicaralia."
+   class="mk-wa-fab"
+   target="_blank"
+   rel="noopener"
+   aria-label="Falar com a Medicaralia no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// === Medicaralia: carrega JSON e renderiza componentes ===
+
+async function loadJSON(path) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+function buildURL(esp, cidade) {
+  const p = new URLSearchParams();
+  if (esp) p.set('esp', esp);
+  if (cidade) p.set('cidade', cidade);
+  return '/profissionais/?' + p.toString();
+}
+
+function initBusca(profissionais, especialidades, cidades) {
+  const selEsp = document.getElementById('busca-esp');
+  const selCid = document.getElementById('busca-cidade');
+
+  if (especialidades?.especialidades) {
+    especialidades.especialidades.forEach(e => {
+      const o = document.createElement('option');
+      o.value = e.slug;
+      o.textContent = e.nome;
+      selEsp.appendChild(o);
+    });
+  }
+
+  if (cidades?.cidades) {
+    cidades.cidades.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c.slug;
+      o.textContent = c.nome + ' — ' + c.estado;
+      selCid.appendChild(o);
+    });
+  }
+
+  document.getElementById('btn-buscar').addEventListener('click', () => {
+    window.location.href = buildURL(selEsp.value, selCid.value);
+  });
+
+  const ativos = profissionais?.profissionais?.filter(p => p.ativo) ?? [];
+  document.getElementById('stat-prof').textContent = ativos.length || '—';
+  document.getElementById('stat-esp').textContent = especialidades?.especialidades?.length || '—';
+  document.getElementById('stat-cid').textContent = cidades?.cidades?.length || '—';
+}
+
+function renderEspecialidades(especialidades) {
+  const grid = document.getElementById('esp-grid');
+  if (!grid || !especialidades?.especialidades) return;
+  grid.innerHTML = especialidades.especialidades.slice(0, 8).map(e => `
+    <a class="mk-esp-card"
+       href="/profissionais/?esp=${encodeURIComponent(e.slug)}"
+       aria-label="Ver profissionais de ${e.nome}">
+      <div class="mk-esp-icon" aria-hidden="true">${e.icone}</div>
+      <div class="mk-esp-name">${e.nome}</div>
+      ${e.count ? `<div class="mk-esp-count">${e.count}</div>` : ''}
+    </a>
+  `).join('');
+}
+
+function renderProfissionais(profissionais) {
+  const grid = document.getElementById('prof-grid');
+  if (!grid || !profissionais?.profissionais) return;
+
+  const lista = profissionais.profissionais.filter(p => p.ativo).slice(0, 3);
+  if (!lista.length) {
+    grid.innerHTML = '<p style="color:var(--mk-muted);text-align:center;grid-column:1/-1">Nenhum profissional cadastrado ainda. <a href="/cadastro/" style="color:var(--mk-accent-dark)">Seja o primeiro!</a></p>';
+    return;
+  }
+
+  grid.innerHTML = lista.map(p => {
+    const waMsg = encodeURIComponent(`Olá, ${p.nome}! Vi seu perfil na Medicaralia e gostaria de marcar uma consulta.`);
+    const tags = (p.servicos || []).slice(0, 3).map(s => `<span class="mk-tag">${s}</span>`).join('');
+    return `
+      <div class="mk-prof-card">
+        <div class="mk-prof-header">
+          <div class="mk-prof-avatar" aria-hidden="true">${p.avatar || '🩺'}</div>
+          <div>
+            <div class="mk-prof-name">${p.nome}</div>
+            <div class="mk-prof-esp">${p.especialidade}</div>
+            <div class="mk-prof-local">📍 ${p.bairro}, ${p.cidade} — ${p.estado}</div>
+          </div>
+        </div>
+        <div class="mk-prof-tags">
+          ${tags}
+          <span class="mk-tag mk-tag--green">✓ Ativo</span>
+        </div>
+        <div class="mk-prof-footer">
+          <a href="/profissional/${p.slug}/" class="mk-btn mk-btn-ghost">Ver perfil</a>
+          <a href="https://wa.me/${p.whatsapp}?text=${waMsg}"
+             class="mk-btn mk-btn-wa"
+             target="_blank" rel="noopener"
+             aria-label="WhatsApp de ${p.nome}">WhatsApp</a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function initFAQ() {
+  document.querySelectorAll('.mk-faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.mk-faq-item');
+      const aberto = item.classList.contains('is-open');
+      document.querySelectorAll('.mk-faq-item.is-open').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.mk-faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!aberto) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+(async function init() {
+  const [prof, esp, cid] = await Promise.all([
+    loadJSON('/data/profissionais.json'),
+    loadJSON('/data/especialidades.json'),
+    loadJSON('/data/cidades.json')
+  ]);
+  initBusca(prof, esp, cid);
+  renderEspecialidades(esp);
+  renderProfissionais(prof);
+  initFAQ();
+})();
+</script>
+
+</body>
+</html>

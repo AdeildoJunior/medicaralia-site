@@ -1,0 +1,25 @@
+# Backups e referências antigas
+backups/
+referencias/
+*-backup-*
+*.tar.gz
+
+# Pastas internas de prompts/contexto
+prompts/
+CLAUDE.md
+docs-internos/
+
+# Dados privados
+data-private/
+*.local.json
+*.private.json
+*.secret.json
+.env
+.env.*
+
+# Sistema/editor
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+*.pyc
