@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Página não encontrada — Medicaralia</title>
   <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="/assets/mk.css" />
+  <script>
+    /* Esta página é servida para qualquer URL inexistente, em qualquer profundidade.
+       O <base> fixa a raiz do site para que CSS e links funcionem tanto em
+       medicaralia.com.br/ quanto em usuario.github.io/medicaralia-site/. */
+    (function () {
+      var raiz = '/';
+      if (location.hostname.indexOf('github.io') !== -1) {
+        var primeiro = location.pathname.split('/')[1];
+        if (primeiro) raiz = '/' + primeiro + '/';
+      }
+      document.write('<base href="' + raiz + '">');
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/mk.css" />
   <meta name="theme-color" content="#1a4f72" />
 </head>
 <body>
@@ -19,16 +32,16 @@
 <header class="mk-header">
   <div class="mk-wrap">
     <div class="mk-header-inner">
-      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+      <a href="./" class="mk-logo" aria-label="Medicaralia — Página inicial">
         <div class="mk-logo-icon" aria-hidden="true">M</div>
         Medic<span class="mk-logo-accent">aralia</span>
       </a>
       <nav class="mk-nav" aria-label="Navegação principal">
-        <a href="/" class="mk-nav-link">Início</a>
-        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
-        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+        <a href="./" class="mk-nav-link">Início</a>
+        <a href="profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="sobre/" class="mk-nav-link">Sobre</a>
       </nav>
-      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+      <a href="cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
     </div>
   </div>
 </header>
@@ -39,8 +52,8 @@
     <h3 style="font-size:1.4rem">Página não encontrada</h3>
     <p>O endereço acessado não existe ou foi movido. Que tal buscar um profissional?</p>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a class="mk-btn mk-btn-primary" href="/profissionais/">Buscar profissionais</a>
-      <a class="mk-btn mk-btn-ghost" href="/">Voltar ao início</a>
+      <a class="mk-btn mk-btn-primary" href="profissionais/">Buscar profissionais</a>
+      <a class="mk-btn mk-btn-ghost" href="./">Voltar ao início</a>
     </div>
   </div>
 </main>
@@ -54,6 +67,6 @@
   </div>
 </footer>
 
-<script src="/assets/mk.js"></script>
+<script src="assets/mk.js"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
   <title>Profissionais de saúde — Busque por especialidade, cidade e bairro | Medicaralia</title>
   <meta name="description" content="Encontre médicos, dentistas, psicólogos, nutricionistas e outros profissionais de saúde por especialidade, cidade e bairro. Veja no mapa e fale direto pelo WhatsApp." />
   <link rel="canonical" href="https://medicaralia.com.br/profissionais/" />
-  <link rel="stylesheet" href="/assets/mk.css" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="../assets/mk.css" />
+  <link rel="manifest" href="../site.webmanifest" />
   <meta name="theme-color" content="#1a4f72" />
 </head>
 <body>
@@ -21,16 +21,16 @@
 <header class="mk-header">
   <div class="mk-wrap">
     <div class="mk-header-inner">
-      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+      <a href="../" class="mk-logo" aria-label="Medicaralia — Página inicial">
         <div class="mk-logo-icon" aria-hidden="true">M</div>
         Medic<span class="mk-logo-accent">aralia</span>
       </a>
       <nav class="mk-nav" aria-label="Navegação principal">
-        <a href="/" class="mk-nav-link">Início</a>
-        <a href="/profissionais/" class="mk-nav-link" aria-current="page">Profissionais</a>
-        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+        <a href="../" class="mk-nav-link">Início</a>
+        <a href="../profissionais/" class="mk-nav-link" aria-current="page">Profissionais</a>
+        <a href="../sobre/" class="mk-nav-link">Sobre</a>
       </nav>
-      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+      <a href="../cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
     </div>
   </div>
 </header>
@@ -38,7 +38,7 @@
 <div class="mk-pagebar">
   <div class="mk-wrap">
     <nav class="mk-crumb" aria-label="Você está em">
-      <a href="/">Início</a>
+      <a href="../">Início</a>
       <span aria-hidden="true">›</span>
       <span>Profissionais</span>
     </nav>
@@ -150,16 +150,16 @@
       <div class="mk-footer-col">
         <h4>Para pacientes</h4>
         <div class="mk-footer-links">
-          <a href="/profissionais/">Buscar profissionais</a>
-          <a href="/profissionais/?online=1">Teleconsulta</a>
-          <a href="/sobre/">Sobre a Medicaralia</a>
+          <a href="../profissionais/">Buscar profissionais</a>
+          <a href="../profissionais/?online=1">Teleconsulta</a>
+          <a href="../sobre/">Sobre a Medicaralia</a>
         </div>
       </div>
       <div class="mk-footer-col">
         <h4>Para profissionais</h4>
         <div class="mk-footer-links">
-          <a href="/cadastro/">Cadastrar meu perfil</a>
-          <a href="/sobre/#planos">Planos</a>
+          <a href="../cadastro/">Cadastrar meu perfil</a>
+          <a href="../sobre/#planos">Planos</a>
         </div>
       </div>
     </div>
@@ -170,7 +170,7 @@
   </div>
 </footer>
 
-<script src="/assets/mk.js"></script>
+<script src="../assets/mk.js"></script>
 <script>
 (function () {
   'use strict';
@@ -302,7 +302,7 @@
     if (p.aceita_convenio) tags.push('<span class="mk-tag">Aceita convênio</span>');
     if (p.preco_consulta) tags.push('<span class="mk-tag">' + MK.formatarPreco(p.preco_consulta) + '</span>');
 
-    var perfil = '/profissional/?p=' + encodeURIComponent(p.slug);
+    var perfil = MK.url('profissional/?p=' + encodeURIComponent(p.slug));
 
     return '' +
       '<article class="mk-result" data-slug="' + MK.esc(p.slug) + '">' +

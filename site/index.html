@@ -23,8 +23,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/assets/mk.css" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="assets/mk.css" />
+  <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#1a4f72" />
 </head>
 <body>
@@ -39,16 +39,16 @@
 <header class="mk-header">
   <div class="mk-wrap">
     <div class="mk-header-inner">
-      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+      <a href="./" class="mk-logo" aria-label="Medicaralia — Página inicial">
         <div class="mk-logo-icon" aria-hidden="true">M</div>
         Medic<span class="mk-logo-accent">aralia</span>
       </a>
       <nav class="mk-nav" aria-label="Navegação principal">
-        <a href="/" class="mk-nav-link">Início</a>
-        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
-        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+        <a href="./" class="mk-nav-link">Início</a>
+        <a href="profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="sobre/" class="mk-nav-link">Sobre</a>
       </nav>
-      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+      <a href="cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
     </div>
   </div>
 </header>
@@ -89,9 +89,9 @@
           </div>
           <div class="mk-search-hint" aria-label="Sugestões rápidas">
             Exemplos:
-            <a href="/profissionais/?esp=cardiologia">Cardiologia</a>
-            <a href="/profissionais/?esp=pediatria">Pediatria</a>
-            <a href="/profissionais/?esp=dermatologia">Dermatologia</a>
+            <a href="profissionais/?esp=cardiologia">Cardiologia</a>
+            <a href="profissionais/?esp=pediatria">Pediatria</a>
+            <a href="profissionais/?esp=dermatologia">Dermatologia</a>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@
           </div>
         </div>
         <div class="mk-hero-cta">
-          <a href="/cadastro/" class="mk-btn mk-btn-primary">Quero me cadastrar</a>
+          <a href="cadastro/" class="mk-btn mk-btn-primary">Quero me cadastrar</a>
           <span class="mk-hero-cta-note">Gratuito no lançamento</span>
         </div>
       </div>
@@ -155,7 +155,7 @@
       <!-- Renderizado via JS a partir de data/profissionais.json -->
     </div>
     <div class="mk-text-center mk-mt-32">
-      <a href="/profissionais/" class="mk-btn mk-btn-ghost">Ver todos os profissionais</a>
+      <a href="profissionais/" class="mk-btn mk-btn-ghost">Ver todos os profissionais</a>
     </div>
   </div>
 </section>
@@ -172,7 +172,7 @@
       <div class="mk-map-canvas" id="home-mapa" style="height:420px">Carregando mapa…</div>
     </div>
     <div class="mk-text-center mk-mt-24">
-      <a href="/profissionais/" class="mk-btn mk-btn-primary">Buscar com filtros e mapa</a>
+      <a href="profissionais/" class="mk-btn mk-btn-primary">Buscar com filtros e mapa</a>
     </div>
   </div>
 </section>
@@ -223,7 +223,7 @@
           <li>Você aparece nas buscas por especialidade e cidade</li>
           <li>Seus dados são protegidos e você controla o que é exibido</li>
         </ul>
-        <a href="/cadastro/" class="mk-btn mk-btn-wa">
+        <a href="cadastro/" class="mk-btn mk-btn-wa">
           Quero me cadastrar gratuitamente
         </a>
         <p class="mk-pro-note">Cadastro 100% gratuito durante o período de lançamento.</p>
@@ -347,17 +347,17 @@
       <div class="mk-footer-col">
         <h4>Navegação</h4>
         <ul class="mk-footer-links">
-          <li><a href="/">Início</a></li>
-          <li><a href="/profissionais/">Profissionais</a></li>
-          <li><a href="/cadastro/">Cadastre-se</a></li>
-          <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="./">Início</a></li>
+          <li><a href="profissionais/">Profissionais</a></li>
+          <li><a href="cadastro/">Cadastre-se</a></li>
+          <li><a href="sobre/">Sobre</a></li>
         </ul>
       </div>
       <div class="mk-footer-col">
         <h4>Institucional</h4>
         <ul class="mk-footer-links">
-          <li><a href="/sobre/#privacidade">Política de Privacidade</a></li>
-          <li><a href="/sobre/#termos">Termos de Uso</a></li>
+          <li><a href="sobre/#privacidade">Política de Privacidade</a></li>
+          <li><a href="sobre/#termos">Termos de Uso</a></li>
           <li><a href="mailto:contato@medicaralia.com.br">contato@medicaralia.com.br</a></li>
         </ul>
       </div>
@@ -381,7 +381,7 @@
   </svg>
 </a>
 
-<script src="/assets/mk.js"></script>
+<script src="assets/mk.js"></script>
 <script>
 // === Medicaralia — Home: busca, especialidades, destaques, mapa e FAQ ===
 (function () {
@@ -392,7 +392,7 @@
     if (esp) p.set('especialidade', esp);
     if (cidade) p.set('cidade', cidade);
     var qs = p.toString();
-    return '/profissionais/' + (qs ? '?' + qs : '');
+    return MK.url('profissionais/') + (qs ? '?' + qs : '');
   }
 
   function initBusca(base) {
@@ -428,7 +428,7 @@
     var grid = document.getElementById('esp-grid');
     if (!grid) return;
     grid.innerHTML = base.especialidades.slice(0, 8).map(function (e) {
-      return '<a class="mk-esp-card" href="/profissionais/?especialidade=' + encodeURIComponent(e.slug) + '"' +
+      return '<a class="mk-esp-card" href="profissionais/?especialidade=' + encodeURIComponent(e.slug) + '"' +
              ' aria-label="Ver profissionais de ' + MK.esc(e.nome) + '">' +
              '<div class="mk-esp-icon" aria-hidden="true">' + MK.esc(e.icone) + '</div>' +
              '<div class="mk-esp-name">' + MK.esc(e.nome) + '</div>' +
@@ -444,12 +444,12 @@
     var lista = base.profissionais.slice(0, 3);
     if (!lista.length) {
       grid.innerHTML = '<p style="color:var(--mk-muted);text-align:center;grid-column:1/-1">' +
-        'Nenhum profissional cadastrado ainda. <a href="/cadastro/" style="color:var(--mk-accent-dark)">Seja o primeiro!</a></p>';
+        'Nenhum profissional cadastrado ainda. <a href="cadastro/" style="color:var(--mk-accent-dark)">Seja o primeiro!</a></p>';
       return;
     }
 
     grid.innerHTML = lista.map(function (p) {
-      var perfil = '/profissional/?p=' + encodeURIComponent(p.slug);
+      var perfil = MK.url('profissional/?p=' + encodeURIComponent(p.slug));
       var tags = (p.servicos || []).slice(0, 2).map(function (s) {
         return '<span class="mk-tag">' + MK.esc(s) + '</span>';
       }).join('');

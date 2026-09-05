@@ -6,10 +6,34 @@
 
   var MK = {};
 
+  /* ---------- Raiz do site ----------
+     O site pode ser servido na raiz de um domínio (medicaralia.com.br/) ou dentro
+     de um subdiretório (usuario.github.io/medicaralia-site/). A raiz é derivada do
+     próprio caminho deste script, que vive sempre em <raiz>/assets/mk.js. */
+  function descobrirRaiz() {
+    var atual = document.currentScript;
+    if (!atual) {
+      var scripts = document.getElementsByTagName('script');
+      for (var i = scripts.length - 1; i >= 0; i--) {
+        if (scripts[i].src && scripts[i].src.indexOf('mk.js') !== -1) { atual = scripts[i]; break; }
+      }
+    }
+    if (!atual || !atual.src) return '/';
+    var caminho = new URL(atual.src, global.location.href).pathname;
+    return caminho.replace(/assets\/mk\.js(\?.*)?$/, '');
+  }
+
+  MK.raiz = descobrirRaiz();
+
+  /* Monta uma URL interna a partir da raiz do site. */
+  MK.url = function (caminho) {
+    return MK.raiz + String(caminho || '').replace(/^\//, '');
+  };
+
   /* ---------- Configuração ---------- */
   MK.config = {
     whatsappPlataforma: '5521900000000',
-    dataBase: '/data/',
+    dataBase: MK.raiz + 'data/',
     leafletCSS: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
     leafletJS: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
     // OpenStreetMap padrão: sem chave de API. (O CARTO, usado no site da SoproLife,
@@ -213,7 +237,7 @@
         '<div class="mk-map-pop-esp">' + MK.esc(p.especialidade) + '</div>' +
         '<div style="font-size:.78rem;color:#5c7a8a;margin-bottom:6px">' +
         MK.esc(p.bairro) + ' · ' + MK.esc(p.cidade) + '/' + MK.esc(p.estado) + '</div>' +
-        '<a href="/profissional/?p=' + encodeURIComponent(p.slug) + '">Ver perfil completo →</a>' +
+        '<a href="' + MK.url('profissional/?p=' + encodeURIComponent(p.slug)) + '">Ver perfil completo →</a>' +
         '</div>'
       );
       if (opcoes.aoClicar) {

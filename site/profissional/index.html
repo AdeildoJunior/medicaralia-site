@@ -6,8 +6,8 @@
   <title>Perfil do profissional | Medicaralia</title>
   <meta name="description" content="Perfil de profissional de saúde na Medicaralia: especialidade, formação, serviços, local de atendimento e contato direto por WhatsApp." />
   <meta name="robots" content="noindex, follow" />
-  <link rel="stylesheet" href="/assets/mk.css" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="../assets/mk.css" />
+  <link rel="manifest" href="../site.webmanifest" />
   <meta name="theme-color" content="#1a4f72" />
 </head>
 <body>
@@ -21,16 +21,16 @@
 <header class="mk-header">
   <div class="mk-wrap">
     <div class="mk-header-inner">
-      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+      <a href="../" class="mk-logo" aria-label="Medicaralia — Página inicial">
         <div class="mk-logo-icon" aria-hidden="true">M</div>
         Medic<span class="mk-logo-accent">aralia</span>
       </a>
       <nav class="mk-nav" aria-label="Navegação principal">
-        <a href="/" class="mk-nav-link">Início</a>
-        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
-        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+        <a href="../" class="mk-nav-link">Início</a>
+        <a href="../profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="../sobre/" class="mk-nav-link">Sobre</a>
       </nav>
-      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+      <a href="../cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
     </div>
   </div>
 </header>
@@ -38,9 +38,9 @@
 <div class="mk-pagebar">
   <div class="mk-wrap">
     <nav class="mk-crumb" aria-label="Você está em">
-      <a href="/">Início</a>
+      <a href="../">Início</a>
       <span aria-hidden="true">›</span>
-      <a href="/profissionais/">Profissionais</a>
+      <a href="../profissionais/">Profissionais</a>
       <span aria-hidden="true">›</span>
       <span id="crumb-nome">Perfil</span>
     </nav>
@@ -70,16 +70,16 @@
       <div class="mk-footer-col">
         <h4>Para pacientes</h4>
         <div class="mk-footer-links">
-          <a href="/profissionais/">Buscar profissionais</a>
-          <a href="/profissionais/?online=1">Teleconsulta</a>
-          <a href="/sobre/">Sobre a Medicaralia</a>
+          <a href="../profissionais/">Buscar profissionais</a>
+          <a href="../profissionais/?online=1">Teleconsulta</a>
+          <a href="../sobre/">Sobre a Medicaralia</a>
         </div>
       </div>
       <div class="mk-footer-col">
         <h4>Para profissionais</h4>
         <div class="mk-footer-links">
-          <a href="/cadastro/">Cadastrar meu perfil</a>
-          <a href="/sobre/#planos">Planos</a>
+          <a href="../cadastro/">Cadastrar meu perfil</a>
+          <a href="../sobre/#planos">Planos</a>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
   </div>
 </footer>
 
-<script src="/assets/mk.js"></script>
+<script src="../assets/mk.js"></script>
 <script>
 (function () {
   'use strict';
@@ -105,7 +105,7 @@
         '<div class="mk-empty-icon" aria-hidden="true">🤔</div>' +
         '<h3>Não encontramos esse profissional</h3>' +
         '<p>O perfil pode ter sido removido ou o endereço está incompleto.</p>' +
-        '<a class="mk-btn mk-btn-primary" href="/profissionais/">Ver todos os profissionais</a>' +
+        '<a class="mk-btn mk-btn-primary" href="../profissionais/">Ver todos os profissionais</a>' +
       '</div>';
   }
 
@@ -180,12 +180,12 @@
               return '<article class="mk-result" style="box-shadow:none">' +
                 '<div class="mk-result-avatar" aria-hidden="true">' + MK.esc(o.avatar || '🩺') + '</div>' +
                 '<div class="mk-result-body">' +
-                  '<h3 class="mk-result-name"><a href="/profissional/?p=' + encodeURIComponent(o.slug) + '">' + MK.esc(o.nome) + '</a></h3>' +
+                  '<h3 class="mk-result-name"><a href="../profissional/?p=' + encodeURIComponent(o.slug) + '">' + MK.esc(o.nome) + '</a></h3>' +
                   '<p class="mk-result-esp">' + MK.esc(o.especialidade) + '</p>' +
                   '<p class="mk-result-local">📍 ' + MK.esc(o.bairro) + ', ' + MK.esc(o.cidade) + '/' + MK.esc(o.estado) + '</p>' +
                 '</div>' +
                 '<div class="mk-result-side">' +
-                  '<a class="mk-btn mk-btn-ghost" href="/profissional/?p=' + encodeURIComponent(o.slug) + '">Ver perfil</a>' +
+                  '<a class="mk-btn mk-btn-ghost" href="../profissional/?p=' + encodeURIComponent(o.slug) + '">Ver perfil</a>' +
                 '</div>' +
               '</article>';
             }).join('') +
@@ -204,7 +204,7 @@
           '</dl>' +
           '<div class="mk-aside-cta">' +
             '<a class="mk-btn mk-btn-wa" href="' + wa + '" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>' +
-            '<a class="mk-btn mk-btn-ghost" href="/profissionais/?especialidade=' + encodeURIComponent(p.especialidade_slug) + '">Ver outros de ' + MK.esc(p.especialidade) + '</a>' +
+            '<a class="mk-btn mk-btn-ghost" href="../profissionais/?especialidade=' + encodeURIComponent(p.especialidade_slug) + '">Ver outros de ' + MK.esc(p.especialidade) + '</a>' +
           '</div>' +
           '<p class="mk-aviso" style="margin-top:16px">A Medicaralia conecta você ao profissional. O agendamento, o valor e a conduta clínica são de responsabilidade dele. Esta página não substitui uma consulta.</p>' +
         '</div>' +
