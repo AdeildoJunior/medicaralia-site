@@ -1,13 +1,104 @@
 {
-  "versao": "1.0",
+  "versao": "1.1",
+  "geradoEm": "2026-09-04",
   "especialidades": [
-    { "slug": "cardiologia",   "nome": "Cardiologia",             "icone": "❤️",  "count": "1 profissional" },
-    { "slug": "dermatologia",  "nome": "Dermatologia",            "icone": "🌿",  "count": "1 profissional" },
-    { "slug": "pediatria",     "nome": "Pediatria",               "icone": "👶",  "count": "1 profissional" },
-    { "slug": "ortopedia",     "nome": "Ortopedia",               "icone": "🦴",  "count": "1 profissional" },
-    { "slug": "psiquiatria",   "nome": "Psiquiatria",             "icone": "🧠",  "count": "1 profissional" },
-    { "slug": "clinica-geral", "nome": "Clínica Geral",           "icone": "🩺",  "count": "" },
-    { "slug": "ginecologia",   "nome": "Ginecologia e Obstetrícia","icone": "🌸", "count": "" },
-    { "slug": "neurologia",    "nome": "Neurologia",              "icone": "⚡",  "count": "" }
+    {
+      "slug": "clinica-geral",
+      "nome": "Clínica Geral",
+      "icone": "🩺",
+      "count": "2 profissionais",
+      "total": 2
+    },
+    {
+      "slug": "pediatria",
+      "nome": "Pediatria",
+      "icone": "👶",
+      "count": "2 profissionais",
+      "total": 2
+    },
+    {
+      "slug": "cardiologia",
+      "nome": "Cardiologia",
+      "icone": "❤️",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "dermatologia",
+      "nome": "Dermatologia",
+      "icone": "🌿",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "endocrinologia",
+      "nome": "Endocrinologia",
+      "icone": "🔬",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "fisioterapia",
+      "nome": "Fisioterapia",
+      "icone": "🤸",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "ginecologia",
+      "nome": "Ginecologia e Obstetrícia",
+      "icone": "🌸",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "neurologia",
+      "nome": "Neurologia",
+      "icone": "⚡",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "nutricao",
+      "nome": "Nutrição",
+      "icone": "🥗",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "odontologia",
+      "nome": "Odontologia",
+      "icone": "🦷",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "oftalmologia",
+      "nome": "Oftalmologia",
+      "icone": "👁️",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "ortopedia",
+      "nome": "Ortopedia",
+      "icone": "🦴",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "psicologia",
+      "nome": "Psicologia",
+      "icone": "💬",
+      "count": "1 profissional",
+      "total": 1
+    },
+    {
+      "slug": "psiquiatria",
+      "nome": "Psiquiatria",
+      "icone": "🧠",
+      "count": "1 profissional",
+      "total": 1
+    }
   ]
 }

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastre seu perfil gratuitamente | Medicaralia</title>
+  <meta name="description" content="Profissional de saúde em início de carreira? Crie seu perfil na Medicaralia de graça e seja encontrado por pacientes da sua região." />
+  <link rel="canonical" href="https://medicaralia.com.br/cadastro/" />
+  <link rel="stylesheet" href="/assets/mk.css" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1a4f72" />
+</head>
+<body>
+
+<div class="mk-demo-bar" role="status">
+  <div class="mk-wrap">
+    <strong>Prévia do site.</strong> Os profissionais exibidos são fictícios, criados apenas para demonstrar o funcionamento. Nenhum é uma pessoa real e nenhum contato é válido.
+  </div>
+</div>
+
+<header class="mk-header">
+  <div class="mk-wrap">
+    <div class="mk-header-inner">
+      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+        <div class="mk-logo-icon" aria-hidden="true">M</div>
+        Medic<span class="mk-logo-accent">aralia</span>
+      </a>
+      <nav class="mk-nav" aria-label="Navegação principal">
+        <a href="/" class="mk-nav-link">Início</a>
+        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+      </nav>
+      <a href="/cadastro/" class="mk-btn mk-btn-primary" aria-current="page">Cadastre-se grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="mk-pagebar">
+  <div class="mk-wrap">
+    <nav class="mk-crumb" aria-label="Você está em">
+      <a href="/">Início</a>
+      <span aria-hidden="true">›</span>
+      <span>Cadastro profissional</span>
+    </nav>
+    <h1>Crie seu perfil gratuitamente</h1>
+    <p>Seu começo na saúde merece ser visto. Preencha os dados abaixo e nossa equipe monta seu perfil e entra em contato para confirmar as informações.</p>
+  </div>
+</div>
+
+<main class="mk-wrap">
+  <div class="mk-profile" style="grid-template-columns: minmax(0,1fr) 320px">
+
+    <div>
+      <div class="mk-card" id="bloco-form">
+        <h2>Dados do profissional</h2>
+
+        <form class="mk-form" id="form-cadastro" novalidate>
+
+          <div class="mk-field">
+            <label for="c-nome">Nome completo <span class="mk-req" aria-hidden="true">*</span></label>
+            <input type="text" id="c-nome" name="nome" autocomplete="name" required />
+            <div class="mk-field-error">Informe seu nome completo.</div>
+          </div>
+
+          <div class="mk-form-row">
+            <div class="mk-field">
+              <label for="c-esp">Especialidade / área <span class="mk-req" aria-hidden="true">*</span></label>
+              <select id="c-esp" name="especialidade" required>
+                <option value="">Selecione…</option>
+                <option value="outra">Outra (descrever abaixo)</option>
+              </select>
+              <div class="mk-field-error">Selecione sua área de atuação.</div>
+            </div>
+
+            <div class="mk-field">
+              <label for="c-registro">Registro profissional</label>
+              <input type="text" id="c-registro" name="registro" placeholder="Ex.: CRM/RJ 123456" />
+              <div class="mk-field-hint">CRM, CRO, CRP, CRN, CREFITO… Usado apenas para validação interna.</div>
+            </div>
+          </div>
+
+          <div class="mk-form-row">
+            <div class="mk-field">
+              <label for="c-cidade">Cidade <span class="mk-req" aria-hidden="true">*</span></label>
+              <input type="text" id="c-cidade" name="cidade" list="lista-cidades" required />
+              <datalist id="lista-cidades"></datalist>
+              <div class="mk-field-error">Informe a cidade onde você atende.</div>
+            </div>
+
+            <div class="mk-field">
+              <label for="c-bairro">Bairro</label>
+              <input type="text" id="c-bairro" name="bairro" placeholder="Onde você atende" />
+            </div>
+          </div>
+
+          <div class="mk-form-row">
+            <div class="mk-field">
+              <label for="c-whats">WhatsApp <span class="mk-req" aria-hidden="true">*</span></label>
+              <input type="tel" id="c-whats" name="whatsapp" placeholder="(21) 90000-0000" inputmode="tel" autocomplete="tel" required />
+              <div class="mk-field-error">Informe um WhatsApp válido com DDD.</div>
+            </div>
+
+            <div class="mk-field">
+              <label for="c-email">E-mail</label>
+              <input type="email" id="c-email" name="email" autocomplete="email" placeholder="voce@email.com" />
+              <div class="mk-field-error">Confira o formato do e-mail.</div>
+            </div>
+          </div>
+
+          <div class="mk-field">
+            <label id="lbl-modal2">Como você atende</label>
+            <div role="group" aria-labelledby="lbl-modal2" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:4px">
+              <label class="mk-filter-check"><input type="checkbox" name="modalidade" value="Presencial" checked /> Presencial</label>
+              <label class="mk-filter-check"><input type="checkbox" name="modalidade" value="Teleconsulta" /> Teleconsulta</label>
+              <label class="mk-filter-check"><input type="checkbox" name="modalidade" value="Domiciliar" /> Domiciliar</label>
+            </div>
+          </div>
+
+          <div class="mk-field">
+            <label for="c-sobre">Conte um pouco sobre seu atendimento</label>
+            <textarea id="c-sobre" name="sobre" maxlength="600" placeholder="Formação, foco de atuação e o tipo de atendimento que você oferece."></textarea>
+            <div class="mk-field-hint"><span id="c-contador">0</span>/600 caracteres. Evite promessas de resultado ou garantia de cura — o texto passa por revisão editorial.</div>
+          </div>
+
+          <div class="mk-consent">
+            <input type="checkbox" id="c-consent" required />
+            <label for="c-consent" style="margin:0;font-weight:400">
+              Autorizo a Medicaralia a usar os dados acima para montar meu perfil público e entrar em contato comigo.
+              Estou ciente de que posso solicitar correção ou exclusão a qualquer momento, conforme a
+              <a href="/sobre/#privacidade">política de privacidade</a> (LGPD). <span class="mk-req" aria-hidden="true">*</span>
+            </label>
+          </div>
+          <div class="mk-field-error" id="erro-consent" style="margin-top:-8px">É necessário autorizar o uso dos dados para continuar.</div>
+
+          <button type="submit" class="mk-btn mk-btn-primary" style="justify-content:center">Enviar cadastro pelo WhatsApp</button>
+
+          <p style="font-size:.76rem;color:var(--mk-muted);margin:0;line-height:1.55">
+            O envio abre uma conversa no WhatsApp com sua mensagem já preenchida. Nenhum dado é gravado em servidor neste momento —
+            os campos ficam apenas no seu navegador até você enviar.
+          </p>
+        </form>
+      </div>
+
+      <div class="mk-card mk-form-ok" id="bloco-ok">
+        <div style="font-size:2.6rem" aria-hidden="true">✅</div>
+        <h2>Cadastro montado!</h2>
+        <p>Abrimos o WhatsApp com seus dados prontos. É só enviar a mensagem que nossa equipe responde e publica seu perfil.</p>
+        <a class="mk-btn mk-btn-wa" id="ok-link" href="#" target="_blank" rel="noopener">Não abriu? Clique aqui</a>
+        <p style="margin-top:16px"><button type="button" class="mk-filter-reset" id="ok-voltar" style="max-width:220px;margin:0 auto">Corrigir dados</button></p>
+      </div>
+    </div>
+
+    <aside class="mk-aside-sticky">
+      <div class="mk-card">
+        <h2>Por que a Medicaralia</h2>
+        <ul class="mk-list-check">
+          <li>Perfil gratuito enquanto você está começando</li>
+          <li>Você aparece na busca por especialidade e bairro</li>
+          <li>Pacientes falam direto no seu WhatsApp</li>
+          <li>Sem comissão por consulta</li>
+          <li>Você controla o que aparece no seu perfil</li>
+        </ul>
+      </div>
+      <div class="mk-card">
+        <h2>O que acontece depois</h2>
+        <dl class="mk-def">
+          <div><dt>1. Recebemos</dt><dd>Seu contato</dd></div>
+          <div><dt>2. Conferimos</dt><dd>Registro ativo</dd></div>
+          <div><dt>3. Publicamos</dt><dd>Em até 48h</dd></div>
+        </dl>
+        <p class="mk-aviso" style="margin-top:16px">Só publicamos perfis com registro profissional válido. Conteúdo publicitário segue as normas dos conselhos de classe.</p>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer class="mk-footer" aria-label="Rodapé Medicaralia">
+  <div class="mk-wrap">
+    <div class="mk-footer-grid">
+      <div>
+        <div class="mk-footer-logo">
+          <div class="mk-logo-icon" aria-hidden="true">M</div>
+          Medic<span class="mk-logo-accent">aralia</span>
+        </div>
+        <p class="mk-footer-desc">Visibilidade acessível para profissionais de saúde em início de carreira.</p>
+        <p class="mk-footer-aviso">As informações deste site são de caráter informativo e não substituem uma consulta profissional.</p>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para pacientes</h4>
+        <div class="mk-footer-links">
+          <a href="/profissionais/">Buscar profissionais</a>
+          <a href="/profissionais/?online=1">Teleconsulta</a>
+          <a href="/sobre/">Sobre a Medicaralia</a>
+        </div>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para profissionais</h4>
+        <div class="mk-footer-links">
+          <a href="/cadastro/">Cadastrar meu perfil</a>
+          <a href="/sobre/#planos">Planos</a>
+        </div>
+      </div>
+    </div>
+    <div class="mk-footer-bottom">
+      <span>&copy; <span data-mk-ano>2026</span> Medicaralia · medicaralia.com.br</span>
+      <span>Feito para quem está começando na saúde.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/mk.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var form = document.getElementById('form-cadastro');
+  var blocoForm = document.getElementById('bloco-form');
+  var blocoOk = document.getElementById('bloco-ok');
+  var consent = document.getElementById('c-consent');
+  var erroConsent = document.getElementById('erro-consent');
+  var sobre = document.getElementById('c-sobre');
+  var contador = document.getElementById('c-contador');
+
+  erroConsent.style.display = 'none';
+
+  /* Preenche especialidades e cidades a partir dos dados do site */
+  MK.carregarBase().then(function (base) {
+    var sel = document.getElementById('c-esp');
+    var outra = sel.querySelector('option[value="outra"]');
+    base.especialidades.forEach(function (e) {
+      var o = document.createElement('option');
+      o.value = e.nome;
+      o.textContent = e.nome;
+      sel.insertBefore(o, outra);
+    });
+    var dl = document.getElementById('lista-cidades');
+    base.cidades.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c.nome + '/' + c.estado;
+      dl.appendChild(o);
+    });
+  });
+
+  /* Contador do textarea */
+  sobre.addEventListener('input', function () { contador.textContent = sobre.value.length; });
+
+  /* Máscara simples de telefone */
+  var whats = document.getElementById('c-whats');
+  whats.addEventListener('input', function () {
+    var d = whats.value.replace(/\D/g, '').slice(0, 11);
+    var out = d;
+    if (d.length > 2) out = '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length > 7) out = '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(d.length - 4);
+    whats.value = out;
+  });
+
+  function marcarErro(input, temErro) {
+    var campo = input.closest('.mk-field');
+    if (campo) campo.classList.toggle('has-error', !!temErro);
+    return !temErro;
+  }
+
+  function validar() {
+    var ok = true;
+
+    var nome = document.getElementById('c-nome');
+    ok = marcarErro(nome, nome.value.trim().split(/\s+/).length < 2) && ok;
+
+    var esp = document.getElementById('c-esp');
+    ok = marcarErro(esp, !esp.value) && ok;
+
+    var cidade = document.getElementById('c-cidade');
+    ok = marcarErro(cidade, cidade.value.trim().length < 2) && ok;
+
+    var digitos = whats.value.replace(/\D/g, '');
+    ok = marcarErro(whats, digitos.length < 10 || digitos.length > 11) && ok;
+
+    var email = document.getElementById('c-email');
+    ok = marcarErro(email, email.value.trim() !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) && ok;
+
+    erroConsent.style.display = consent.checked ? 'none' : 'block';
+    if (!consent.checked) ok = false;
+
+    return ok;
+  }
+
+  function montarMensagem() {
+    var modalidades = Array.prototype.slice
+      .call(form.querySelectorAll('input[name="modalidade"]:checked'))
+      .map(function (i) { return i.value; });
+
+    var linhas = [
+      'Olá, Medicaralia! Quero cadastrar meu perfil profissional.',
+      '',
+      'Nome: ' + document.getElementById('c-nome').value.trim(),
+      'Área: ' + document.getElementById('c-esp').value,
+      'Registro: ' + (document.getElementById('c-registro').value.trim() || 'a informar'),
+      'Cidade: ' + document.getElementById('c-cidade').value.trim(),
+      'Bairro: ' + (document.getElementById('c-bairro').value.trim() || 'a informar'),
+      'WhatsApp: ' + whats.value.trim(),
+      'E-mail: ' + (document.getElementById('c-email').value.trim() || 'não informado'),
+      'Atendimento: ' + (modalidades.length ? modalidades.join(', ') : 'a definir')
+    ];
+
+    if (sobre.value.trim()) {
+      linhas.push('', 'Sobre meu atendimento:', sobre.value.trim());
+    }
+    linhas.push('', 'Autorizo o uso dos dados para montagem do perfil.');
+    return linhas.join('\n');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validar()) {
+      var primeiro = form.querySelector('.has-error input, .has-error select');
+      if (primeiro) primeiro.focus();
+      else if (!consent.checked) consent.focus();
+      return;
+    }
+
+    var url = MK.whatsappURL(MK.config.whatsappPlataforma, montarMensagem());
+    document.getElementById('ok-link').href = url;
+
+    blocoForm.style.display = 'none';
+    blocoOk.classList.add('is-visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.open(url, '_blank', 'noopener');
+  });
+
+  document.getElementById('ok-voltar').addEventListener('click', function () {
+    blocoOk.classList.remove('is-visible');
+    blocoForm.style.display = '';
+  });
+
+  /* Limpa erro ao corrigir */
+  form.addEventListener('input', function (e) {
+    var campo = e.target.closest('.mk-field');
+    if (campo) campo.classList.remove('has-error');
+    if (e.target === consent && consent.checked) erroConsent.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil do profissional | Medicaralia</title>
+  <meta name="description" content="Perfil de profissional de saúde na Medicaralia: especialidade, formação, serviços, local de atendimento e contato direto por WhatsApp." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="/assets/mk.css" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1a4f72" />
+</head>
+<body>
+
+<div class="mk-demo-bar" role="status">
+  <div class="mk-wrap">
+    <strong>Prévia do site.</strong> Os profissionais exibidos são fictícios, criados apenas para demonstrar o funcionamento. Nenhum é uma pessoa real e nenhum contato é válido.
+  </div>
+</div>
+
+<header class="mk-header">
+  <div class="mk-wrap">
+    <div class="mk-header-inner">
+      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+        <div class="mk-logo-icon" aria-hidden="true">M</div>
+        Medic<span class="mk-logo-accent">aralia</span>
+      </a>
+      <nav class="mk-nav" aria-label="Navegação principal">
+        <a href="/" class="mk-nav-link">Início</a>
+        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+      </nav>
+      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="mk-pagebar">
+  <div class="mk-wrap">
+    <nav class="mk-crumb" aria-label="Você está em">
+      <a href="/">Início</a>
+      <span aria-hidden="true">›</span>
+      <a href="/profissionais/">Profissionais</a>
+      <span aria-hidden="true">›</span>
+      <span id="crumb-nome">Perfil</span>
+    </nav>
+  </div>
+</div>
+
+<main class="mk-wrap">
+  <div id="perfil-conteudo">
+    <div class="mk-profile">
+      <div><div class="mk-skeleton" style="height:220px"></div></div>
+      <div><div class="mk-skeleton" style="height:300px"></div></div>
+    </div>
+  </div>
+</main>
+
+<footer class="mk-footer" aria-label="Rodapé Medicaralia">
+  <div class="mk-wrap">
+    <div class="mk-footer-grid">
+      <div>
+        <div class="mk-footer-logo">
+          <div class="mk-logo-icon" aria-hidden="true">M</div>
+          Medic<span class="mk-logo-accent">aralia</span>
+        </div>
+        <p class="mk-footer-desc">Visibilidade acessível para profissionais de saúde em início de carreira.</p>
+        <p class="mk-footer-aviso">As informações desta página são de caráter informativo e não substituem uma consulta profissional. Em caso de urgência, procure um serviço de emergência.</p>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para pacientes</h4>
+        <div class="mk-footer-links">
+          <a href="/profissionais/">Buscar profissionais</a>
+          <a href="/profissionais/?online=1">Teleconsulta</a>
+          <a href="/sobre/">Sobre a Medicaralia</a>
+        </div>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para profissionais</h4>
+        <div class="mk-footer-links">
+          <a href="/cadastro/">Cadastrar meu perfil</a>
+          <a href="/sobre/#planos">Planos</a>
+        </div>
+      </div>
+    </div>
+    <div class="mk-footer-bottom">
+      <span>&copy; <span data-mk-ano>2026</span> Medicaralia · medicaralia.com.br</span>
+      <span>Feito para quem está começando na saúde.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/mk.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var alvo = document.getElementById('perfil-conteudo');
+  var slug = MK.qs('p');
+
+  function naoEncontrado() {
+    document.title = 'Profissional não encontrado — Medicaralia';
+    alvo.innerHTML =
+      '<div class="mk-empty" style="margin:40px 0 64px">' +
+        '<div class="mk-empty-icon" aria-hidden="true">🤔</div>' +
+        '<h3>Não encontramos esse profissional</h3>' +
+        '<p>O perfil pode ter sido removido ou o endereço está incompleto.</p>' +
+        '<a class="mk-btn mk-btn-primary" href="/profissionais/">Ver todos os profissionais</a>' +
+      '</div>';
+  }
+
+  function relacionados(p, todos) {
+    return todos.filter(function (o) {
+      return o.slug !== p.slug &&
+        (o.especialidade_slug === p.especialidade_slug || o.cidade_slug === p.cidade_slug);
+    }).slice(0, 3);
+  }
+
+  function render(p, todos) {
+    document.title = p.nome + ' — ' + p.especialidade + ' em ' + p.cidade + ' | Medicaralia';
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content',
+        p.nome + ' — ' + p.especialidade + ' em ' + p.bairro + ', ' + p.cidade + '/' + p.estado + '. ' + p.descricao);
+    }
+    document.getElementById('crumb-nome').textContent = p.nome;
+
+    var wa = MK.whatsappURL(p.whatsapp, MK.mensagemProfissional(p));
+    var listaRel = relacionados(p, todos);
+
+    alvo.innerHTML = '' +
+    '<div class="mk-profile">' +
+
+      '<div>' +
+        '<div class="mk-card">' +
+          '<div class="mk-profile-head">' +
+            '<div class="mk-profile-avatar" aria-hidden="true">' + MK.esc(p.avatar || '🩺') + '</div>' +
+            '<div>' +
+              '<h1 class="mk-profile-name">' + MK.esc(p.nome) + '</h1>' +
+              '<p class="mk-profile-esp">' + MK.esc(p.especialidade) + '</p>' +
+              '<div class="mk-profile-meta">' +
+                '<span>📍 ' + MK.esc(p.bairro) + ', ' + MK.esc(p.cidade) + '/' + MK.esc(p.estado) + '</span>' +
+                (p.registro ? '<span>🪪 ' + MK.esc(p.registro) + '</span>' : '') +
+                (p.horarios ? '<span>🕐 ' + MK.esc(p.horarios) + '</span>' : '') +
+              '</div>' +
+              '<div class="mk-prof-tags" style="margin-top:12px">' +
+                (p.atende_online ? '<span class="mk-tag mk-tag--green">Teleconsulta</span>' : '') +
+                (p.aceita_convenio ? '<span class="mk-tag">Aceita convênio</span>' : '') +
+                (p.ano_formacao ? '<span class="mk-tag">Desde ' + MK.esc(p.ano_formacao) + '</span>' : '') +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="mk-card">' +
+          '<h2>Sobre o atendimento</h2>' +
+          '<p>' + MK.esc(p.descricao) + '</p>' +
+          (p.formacao ? '<p><strong style="color:var(--mk-text)">Formação:</strong> ' + MK.esc(p.formacao) + '</p>' : '') +
+        '</div>' +
+
+        '<div class="mk-card">' +
+          '<h2>Serviços oferecidos</h2>' +
+          '<ul class="mk-list-check">' +
+            (p.servicos || []).map(function (s) { return '<li>' + MK.esc(s) + '</li>'; }).join('') +
+          '</ul>' +
+          '<p style="margin-top:16px;font-size:.8rem">Os valores e serviços são informados pelo próprio profissional e podem variar conforme o caso. Confirme no contato direto.</p>' +
+        '</div>' +
+
+        '<div class="mk-card">' +
+          '<h2>Local de atendimento</h2>' +
+          '<p>' + MK.esc(p.bairro) + ', ' + MK.esc(p.cidade) + '/' + MK.esc(p.estado) + ' — o endereço completo é combinado diretamente com o profissional.</p>' +
+          '<div class="mk-profile-map" id="perfil-mapa">Carregando mapa…</div>' +
+        '</div>' +
+
+        (listaRel.length ?
+        '<div class="mk-card">' +
+          '<h2>Profissionais relacionados</h2>' +
+          '<div class="mk-dir-list">' +
+            listaRel.map(function (o) {
+              return '<article class="mk-result" style="box-shadow:none">' +
+                '<div class="mk-result-avatar" aria-hidden="true">' + MK.esc(o.avatar || '🩺') + '</div>' +
+                '<div class="mk-result-body">' +
+                  '<h3 class="mk-result-name"><a href="/profissional/?p=' + encodeURIComponent(o.slug) + '">' + MK.esc(o.nome) + '</a></h3>' +
+                  '<p class="mk-result-esp">' + MK.esc(o.especialidade) + '</p>' +
+                  '<p class="mk-result-local">📍 ' + MK.esc(o.bairro) + ', ' + MK.esc(o.cidade) + '/' + MK.esc(o.estado) + '</p>' +
+                '</div>' +
+                '<div class="mk-result-side">' +
+                  '<a class="mk-btn mk-btn-ghost" href="/profissional/?p=' + encodeURIComponent(o.slug) + '">Ver perfil</a>' +
+                '</div>' +
+              '</article>';
+            }).join('') +
+          '</div>' +
+        '</div>' : '') +
+      '</div>' +
+
+      '<aside class="mk-aside-sticky">' +
+        '<div class="mk-card">' +
+          '<h2>Falar com ' + MK.esc((p.nome || '').split(' ').slice(0, 2).join(' ')) + '</h2>' +
+          '<dl class="mk-def" style="margin-bottom:18px">' +
+            '<div><dt>Consulta a partir de</dt><dd>' + MK.esc(MK.formatarPreco(p.preco_consulta)) + '</dd></div>' +
+            (p.atendimento ? '<div><dt>Modalidades</dt><dd>' + MK.esc(p.atendimento.join(', ')) + '</dd></div>' : '') +
+            (p.idiomas ? '<div><dt>Idiomas</dt><dd>' + MK.esc(p.idiomas.join(', ')) + '</dd></div>' : '') +
+            (p.horarios ? '<div><dt>Horários</dt><dd>' + MK.esc(p.horarios) + '</dd></div>' : '') +
+          '</dl>' +
+          '<div class="mk-aside-cta">' +
+            '<a class="mk-btn mk-btn-wa" href="' + wa + '" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>' +
+            '<a class="mk-btn mk-btn-ghost" href="/profissionais/?especialidade=' + encodeURIComponent(p.especialidade_slug) + '">Ver outros de ' + MK.esc(p.especialidade) + '</a>' +
+          '</div>' +
+          '<p class="mk-aviso" style="margin-top:16px">A Medicaralia conecta você ao profissional. O agendamento, o valor e a conduta clínica são de responsabilidade dele. Esta página não substitui uma consulta.</p>' +
+        '</div>' +
+      '</aside>' +
+
+    '</div>';
+
+    // dados estruturados
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Physician',
+      name: p.nome,
+      medicalSpecialty: p.especialidade,
+      description: p.descricao,
+      address: { '@type': 'PostalAddress', addressLocality: p.cidade, addressRegion: p.estado, addressCountry: 'BR' },
+      areaServed: p.cidade
+    });
+    document.head.appendChild(ld);
+
+    // mapa do local
+    var node = document.getElementById('perfil-mapa');
+    if (node && p.lat && p.lng) {
+      MK.carregarLeaflet().then(function () {
+        node.textContent = '';
+        MK.montarMapa(node, [p], { padding: [30, 30] });
+      }).catch(function () { node.textContent = 'Não foi possível carregar o mapa agora.'; });
+    } else if (node) {
+      node.textContent = 'Localização não informada.';
+    }
+  }
+
+  if (!slug) { naoEncontrado(); return; }
+
+  MK.carregarBase().then(function (base) {
+    var p = base.profissionais.filter(function (x) { return x.slug === slug || x.id === slug; })[0];
+    if (!p) { naoEncontrado(); return; }
+    render(p, base.profissionais);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,29 +1,87 @@
 {
-  "versao": "1.0",
+  "versao": "1.1",
+  "geradoEm": "2026-09-04",
   "cidades": [
     {
       "slug": "rio-de-janeiro-rj",
       "nome": "Rio de Janeiro",
       "estado": "RJ",
-      "bairros": ["Botafogo", "Tijuca", "Copacabana", "Barra da Tijuca", "Ipanema", "Flamengo", "Méier", "Centro"]
+      "total": 4,
+      "bairros": [
+        "Botafogo",
+        "Tijuca",
+        "Copacabana",
+        "Barra da Tijuca",
+        "Ipanema",
+        "Flamengo",
+        "Méier",
+        "Centro"
+      ]
     },
     {
       "slug": "sao-paulo-sp",
       "nome": "São Paulo",
       "estado": "SP",
-      "bairros": ["Vila Madalena", "Pinheiros", "Moema", "Jardins", "Santana", "Tatuapé", "Centro"]
+      "total": 4,
+      "bairros": [
+        "Vila Madalena",
+        "Pinheiros",
+        "Moema",
+        "Jardins",
+        "Santana",
+        "Tatuapé",
+        "Centro"
+      ]
     },
     {
       "slug": "belo-horizonte-mg",
       "nome": "Belo Horizonte",
       "estado": "MG",
-      "bairros": ["Savassi", "Funcionários", "Lourdes", "Santa Lucia", "Buritis", "Centro"]
+      "total": 2,
+      "bairros": [
+        "Savassi",
+        "Funcionários",
+        "Lourdes",
+        "Santa Lucia",
+        "Buritis",
+        "Centro"
+      ]
     },
     {
       "slug": "curitiba-pr",
       "nome": "Curitiba",
       "estado": "PR",
-      "bairros": ["Batel", "Água Verde", "Centro", "Bigorrilho", "Boa Vista"]
+      "total": 2,
+      "bairros": [
+        "Batel",
+        "Água Verde",
+        "Centro",
+        "Bigorrilho",
+        "Boa Vista"
+      ]
+    },
+    {
+      "slug": "porto-alegre-rs",
+      "nome": "Porto Alegre",
+      "estado": "RS",
+      "total": 2,
+      "bairros": [
+        "Moinhos de Vento",
+        "Menino Deus",
+        "Centro"
+      ]
+    },
+    {
+      "slug": "recife-pe",
+      "nome": "Recife",
+      "estado": "PE",
+      "total": 2,
+      "bairros": [
+        "Boa Viagem",
+        "Espinheiro",
+        "Casa Forte",
+        "Centro"
+      ]
     }
   ]
 }

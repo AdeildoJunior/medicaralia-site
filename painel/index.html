@@ -1,12 +1,213 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Painel Medicaralia</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel Medicaralia — visão interna</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../site/assets/mk.css" />
+  <style>
+    .mk-panel-head { background: var(--mk-primary); color: #fff; padding: 22px 0; }
+    .mk-panel-head .mk-wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .mk-panel-head h1 { margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; }
+    .mk-panel-head p { margin: 4px 0 0; opacity: 0.75; font-size: 0.82rem; }
+    .mk-panel-head .mk-btn { background: rgba(255,255,255,0.14); color: #fff; }
+    .mk-panel-head .mk-btn:hover { background: rgba(255,255,255,0.24); }
+    .mk-panel-main { padding: 28px 0 60px; }
+    .mk-panel-grid { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 22px; align-items: start; }
+    @media (max-width: 940px) { .mk-panel-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
-<body>
-  <h1>Painel Medicaralia</h1>
-  <p>Área futura para controle de profissionais, leads, parceiros e cadastros.</p>
+<body class="mk-panel-body">
+
+<header class="mk-panel-head">
+  <div class="mk-wrap">
+    <div>
+      <h1>Painel Medicaralia</h1>
+      <p>Visão interna de profissionais, cobertura e cadastros — fase de validação</p>
+    </div>
+    <a class="mk-btn" id="link-site" href="../site/" target="_blank" rel="noopener">Abrir site público ↗</a>
+  </div>
+</header>
+
+<main class="mk-panel-main">
+  <div class="mk-wrap">
+
+    <div class="mk-panel-note">
+      <strong>Somente leitura.</strong> Este painel lê os mesmos arquivos JSON que alimentam o site público
+      (<code>site/data/</code>). Não há backend, login nem gravação de dados. Leads e cadastros chegam hoje pelo WhatsApp.
+    </div>
+
+    <div class="mk-kpis" id="kpis">
+      <div class="mk-kpi"><div class="mk-kpi-label">Profissionais ativos</div><div class="mk-kpi-value" id="k-prof">—</div><div class="mk-kpi-sub" id="k-prof-sub">carregando…</div></div>
+      <div class="mk-kpi"><div class="mk-kpi-label">Especialidades</div><div class="mk-kpi-value" id="k-esp">—</div><div class="mk-kpi-sub">áreas cobertas</div></div>
+      <div class="mk-kpi"><div class="mk-kpi-label">Cidades</div><div class="mk-kpi-value" id="k-cid">—</div><div class="mk-kpi-sub" id="k-cid-sub">—</div></div>
+      <div class="mk-kpi"><div class="mk-kpi-label">Teleconsulta</div><div class="mk-kpi-value" id="k-online">—</div><div class="mk-kpi-sub">atendem à distância</div></div>
+      <div class="mk-kpi"><div class="mk-kpi-label">Ticket médio</div><div class="mk-kpi-value" id="k-ticket">—</div><div class="mk-kpi-sub">valor informado de consulta</div></div>
+    </div>
+
+    <div class="mk-panel-grid">
+      <div>
+        <div class="mk-card">
+          <h2>Profissionais cadastrados</h2>
+          <div class="mk-filter-group" style="max-width:320px">
+            <label for="p-busca">Filtrar</label>
+            <input type="search" id="p-busca" placeholder="Nome, especialidade ou cidade…" />
+          </div>
+          <div class="mk-table-wrap">
+            <table class="mk-table">
+              <thead>
+                <tr>
+                  <th>Profissional</th>
+                  <th>Especialidade</th>
+                  <th>Local</th>
+                  <th>Registro</th>
+                  <th>Consulta</th>
+                  <th>Plano</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="tb-prof">
+                <tr><td colspan="7" style="color:var(--mk-muted)">Carregando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:.78rem;color:var(--mk-muted);margin:12px 0 0" id="tb-info"></p>
+        </div>
+
+        <div class="mk-card">
+          <h2>Cobertura por cidade</h2>
+          <div class="mk-table-wrap">
+            <table class="mk-table">
+              <thead>
+                <tr><th>Cidade</th><th>UF</th><th>Profissionais</th><th>Bairros com atendimento</th></tr>
+              </thead>
+              <tbody id="tb-cid"><tr><td colspan="4" style="color:var(--mk-muted)">Carregando…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="mk-card">
+          <h2>Distribuição por especialidade</h2>
+          <div id="dist-esp" style="display:grid;gap:10px"></div>
+        </div>
+
+        <div class="mk-card">
+          <h2>Próximos passos</h2>
+          <ul class="mk-list-check">
+            <li>Substituir perfis de demonstração por profissionais reais</li>
+            <li>Coletar consentimento formal de cada cadastro (LGPD)</li>
+            <li>Registrar leads recebidos pelo WhatsApp</li>
+            <li>Avaliar backend quando passar de ~50 perfis</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</main>
+
+<script src="../site/assets/mk.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // O painel vive fora de /site (não é publicado no GitHub Pages).
+  // Serve-o a partir da raiz do repositório: python3 -m http.server 8080
+  MK.config.dataBase = '../site/data/';
+
+  // Links para o site: relativos em uso local, absolutos se o painel for hospedado.
+  var SITE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:')
+    ? '../site'
+    : 'https://medicaralia.com.br';
+
+  var todos = [];
+
+  document.getElementById('link-site').href = SITE + '/';
+
+  function badge(ativo) {
+    return ativo
+      ? '<span class="mk-badge mk-badge--ok">Ativo</span>'
+      : '<span class="mk-badge mk-badge--off">Inativo</span>';
+  }
+
+  function linhas(lista) {
+    if (!lista.length) {
+      return '<tr><td colspan="7" style="color:var(--mk-muted)">Nenhum profissional com esse filtro.</td></tr>';
+    }
+    return lista.map(function (p) {
+      return '<tr>' +
+        '<td><a href="' + SITE + '/profissional/?p=' + encodeURIComponent(p.slug) + '" target="_blank" rel="noopener" style="color:var(--mk-primary);font-weight:600;text-decoration:none">' +
+          MK.esc(p.avatar || '') + ' ' + MK.esc(p.nome) + '</a></td>' +
+        '<td>' + MK.esc(p.especialidade) + '</td>' +
+        '<td>' + MK.esc(p.bairro) + ', ' + MK.esc(p.cidade) + '/' + MK.esc(p.estado) + '</td>' +
+        '<td style="white-space:nowrap">' + MK.esc(p.registro || '—') + '</td>' +
+        '<td style="white-space:nowrap">' + MK.esc(MK.formatarPreco(p.preco_consulta)) + '</td>' +
+        '<td>' + MK.esc(p.plano || '—') + '</td>' +
+        '<td>' + badge(p.ativo !== false) + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  MK.carregarBase().then(function (base) {
+    todos = base.profissionais;
+
+    var online = todos.filter(function (p) { return p.atende_online; }).length;
+    var precos = todos.map(function (p) { return p.preco_consulta; }).filter(function (v) { return typeof v === 'number'; });
+    var media = precos.length ? Math.round(precos.reduce(function (a, b) { return a + b; }, 0) / precos.length) : null;
+
+    document.getElementById('k-prof').textContent = todos.length;
+    document.getElementById('k-prof-sub').textContent = todos.filter(function (p) { return p.plano === 'gratuito'; }).length + ' no plano gratuito';
+    document.getElementById('k-esp').textContent = base.especialidades.length;
+    document.getElementById('k-cid').textContent = base.cidades.length;
+    document.getElementById('k-online').textContent = online;
+    document.getElementById('k-ticket').textContent = media ? MK.formatarPreco(media) : '—';
+
+    var ufs = {};
+    base.cidades.forEach(function (c) { ufs[c.estado] = true; });
+    document.getElementById('k-cid-sub').textContent = Object.keys(ufs).length + ' estados';
+
+    document.getElementById('tb-prof').innerHTML = linhas(todos);
+    document.getElementById('tb-info').textContent = 'Fonte: site/data/profissionais.json · versão dos dados carregada do arquivo.';
+
+    document.getElementById('tb-cid').innerHTML = base.cidades.map(function (c) {
+      var bairros = {};
+      todos.forEach(function (p) { if (p.cidade_slug === c.slug) bairros[p.bairro] = true; });
+      var lista = Object.keys(bairros);
+      return '<tr>' +
+        '<td style="font-weight:600">' + MK.esc(c.nome) + '</td>' +
+        '<td>' + MK.esc(c.estado) + '</td>' +
+        '<td>' + (c.total || 0) + '</td>' +
+        '<td>' + (lista.length ? MK.esc(lista.join(', ')) : '<span style="color:var(--mk-muted)">nenhum ainda</span>') + '</td>' +
+      '</tr>';
+    }).join('');
+
+    var maxTotal = Math.max.apply(null, base.especialidades.map(function (e) { return e.total || 0; }).concat([1]));
+    document.getElementById('dist-esp').innerHTML = base.especialidades.map(function (e) {
+      var pct = Math.round(((e.total || 0) / maxTotal) * 100);
+      return '<div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px">' +
+          '<span>' + MK.esc(e.icone) + ' ' + MK.esc(e.nome) + '</span>' +
+          '<strong style="color:var(--mk-primary)">' + (e.total || 0) + '</strong>' +
+        '</div>' +
+        '<div style="height:6px;background:var(--mk-bg-strong);border-radius:999px;overflow:hidden">' +
+          '<div style="height:100%;width:' + pct + '%;background:var(--mk-accent);border-radius:999px"></div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  });
+
+  document.getElementById('p-busca').addEventListener('input', function (e) {
+    var termo = MK.slugify(e.target.value);
+    var filtrados = !termo ? todos : todos.filter(function (p) {
+      return MK.slugify([p.nome, p.especialidade, p.cidade, p.bairro, p.registro].join(' ')).indexOf(termo) !== -1;
+    });
+    document.getElementById('tb-prof').innerHTML = linhas(filtrados);
+  });
+})();
+</script>
+
 </body>
 </html>

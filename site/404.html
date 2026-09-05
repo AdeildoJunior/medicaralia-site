@@ -1,21 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medicaralia — Página não encontrada</title>
-  <meta name="robots" content="noindex">
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f7fb;color:#17142a}
-    main{max-width:560px;padding:32px;text-align:center}
-    a{color:#5b3df5;font-weight:700}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página não encontrada — Medicaralia</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/assets/mk.css" />
+  <meta name="theme-color" content="#1a4f72" />
 </head>
 <body>
-  <main>
-    <h1>Página não encontrada</h1>
-    <p>O endereço acessado não existe ou foi movido.</p>
-    <p><a href="/">Voltar para a Medicaralia</a></p>
-  </main>
+
+<div class="mk-demo-bar" role="status">
+  <div class="mk-wrap">
+    <strong>Prévia do site.</strong> Os profissionais exibidos são fictícios, criados apenas para demonstrar o funcionamento. Nenhum é uma pessoa real e nenhum contato é válido.
+  </div>
+</div>
+
+<header class="mk-header">
+  <div class="mk-wrap">
+    <div class="mk-header-inner">
+      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+        <div class="mk-logo-icon" aria-hidden="true">M</div>
+        Medic<span class="mk-logo-accent">aralia</span>
+      </a>
+      <nav class="mk-nav" aria-label="Navegação principal">
+        <a href="/" class="mk-nav-link">Início</a>
+        <a href="/profissionais/" class="mk-nav-link">Profissionais</a>
+        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+      </nav>
+      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+    </div>
+  </div>
+</header>
+
+<main class="mk-wrap">
+  <div class="mk-empty" style="margin:64px 0; border-style:solid; box-shadow:var(--mk-shadow-sm)">
+    <div class="mk-empty-icon" aria-hidden="true">🧭</div>
+    <h3 style="font-size:1.4rem">Página não encontrada</h3>
+    <p>O endereço acessado não existe ou foi movido. Que tal buscar um profissional?</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="mk-btn mk-btn-primary" href="/profissionais/">Buscar profissionais</a>
+      <a class="mk-btn mk-btn-ghost" href="/">Voltar ao início</a>
+    </div>
+  </div>
+</main>
+
+<footer class="mk-footer" aria-label="Rodapé Medicaralia">
+  <div class="mk-wrap">
+    <div class="mk-footer-bottom" style="border:none;padding-top:0">
+      <span>&copy; <span data-mk-ano>2026</span> Medicaralia · medicaralia.com.br</span>
+      <span>Feito para quem está começando na saúde.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/mk.js"></script>
 </body>
 </html>

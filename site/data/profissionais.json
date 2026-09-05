@@ -1,9 +1,9 @@
 {
-  "versao": "1.0",
-  "geradoEm": "2026-06-22",
+  "versao": "1.1",
+  "geradoEm": "2026-09-04",
   "safeToDisplay": true,
   "containsPersonalData": false,
-  "nota": "Dados fictícios usados no MVP para demonstração. Substituir por profissionais reais após validação.",
+  "nota": "Dados ficticios usados no MVP para demonstracao. Nomes, registros, telefones e coordenadas nao correspondem a pessoas reais. Substituir por profissionais reais apos validacao e consentimento (LGPD).",
   "profissionais": [
     {
       "id": "p001",
@@ -16,9 +16,29 @@
       "cidade_slug": "rio-de-janeiro-rj",
       "bairro": "Botafogo",
       "estado": "RJ",
+      "lat": -22.9519,
+      "lng": -43.1841,
       "registro": "CRM/RJ 000001",
+      "formacao": "UFRJ — Residência em Cardiologia (INC)",
+      "ano_formacao": 2023,
       "descricao": "Cardiologista com foco em prevenção cardiovascular e avaliação de risco. Atendimento humanizado e personalizado.",
-      "servicos": ["Consulta cardiológica", "Eletrocardiograma", "Avaliação de risco cardiovascular"],
+      "servicos": [
+        "Consulta cardiológica",
+        "Eletrocardiograma",
+        "Avaliação de risco cardiovascular"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português",
+        "Inglês"
+      ],
+      "horarios": "Seg a sex, 8h às 18h",
+      "preco_consulta": 200,
+      "atende_online": true,
+      "aceita_convenio": false,
       "whatsapp": "5521900000001",
       "ativo": true,
       "plano": "gratuito"
@@ -34,9 +54,29 @@
       "cidade_slug": "sao-paulo-sp",
       "bairro": "Vila Madalena",
       "estado": "SP",
+      "lat": -23.5461,
+      "lng": -46.6911,
       "registro": "CRM/SP 000002",
+      "formacao": "USP — Residência em Dermatologia (HC-FMUSP)",
+      "ano_formacao": 2024,
       "descricao": "Dermatologista clínico com ênfase em diagnóstico de lesões cutâneas e cuidados com a pele.",
-      "servicos": ["Consulta dermatológica", "Mapeamento de nevos", "Dermatoscopia"],
+      "servicos": [
+        "Consulta dermatológica",
+        "Mapeamento de nevos",
+        "Dermatoscopia"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português",
+        "Espanhol"
+      ],
+      "horarios": "Seg, qua e sex, 9h às 17h",
+      "preco_consulta": 250,
+      "atende_online": true,
+      "aceita_convenio": true,
       "whatsapp": "5511900000002",
       "ativo": true,
       "plano": "gratuito"
@@ -52,9 +92,29 @@
       "cidade_slug": "belo-horizonte-mg",
       "bairro": "Savassi",
       "estado": "MG",
+      "lat": -19.9386,
+      "lng": -43.9339,
       "registro": "CRM/MG 000003",
+      "formacao": "UFMG — Residência em Pediatria (Hospital das Clínicas)",
+      "ano_formacao": 2024,
       "descricao": "Pediatra com foco em puericultura e acompanhamento do desenvolvimento infantil desde o nascimento.",
-      "servicos": ["Consulta pediátrica", "Puericultura", "Acompanhamento do desenvolvimento"],
+      "servicos": [
+        "Consulta pediátrica",
+        "Puericultura",
+        "Acompanhamento do desenvolvimento"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta",
+        "Domiciliar"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Ter a sáb, 8h às 16h",
+      "preco_consulta": 180,
+      "atende_online": true,
+      "aceita_convenio": true,
       "whatsapp": "5531900000003",
       "ativo": true,
       "plano": "gratuito"
@@ -70,9 +130,27 @@
       "cidade_slug": "rio-de-janeiro-rj",
       "bairro": "Tijuca",
       "estado": "RJ",
+      "lat": -22.9245,
+      "lng": -43.232,
       "registro": "CRM/RJ 000004",
+      "formacao": "UERJ — Residência em Ortopedia e Traumatologia",
+      "ano_formacao": 2023,
       "descricao": "Ortopedista com experiência em patologias do joelho, tornozelo e reabilitação pós-cirúrgica.",
-      "servicos": ["Consulta ortopédica", "Avaliação de joelho", "Indicação de fisioterapia"],
+      "servicos": [
+        "Consulta ortopédica",
+        "Avaliação de joelho",
+        "Indicação de fisioterapia"
+      ],
+      "atendimento": [
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 13h às 20h",
+      "preco_consulta": 220,
+      "atende_online": false,
+      "aceita_convenio": true,
       "whatsapp": "5521900000004",
       "ativo": true,
       "plano": "gratuito"
@@ -88,10 +166,438 @@
       "cidade_slug": "sao-paulo-sp",
       "bairro": "Pinheiros",
       "estado": "SP",
+      "lat": -23.567,
+      "lng": -46.696,
       "registro": "CRM/SP 000005",
+      "formacao": "Unifesp — Residência em Psiquiatria",
+      "ano_formacao": 2025,
       "descricao": "Psiquiatra com foco em saúde mental do adulto, transtornos de ansiedade e do humor.",
-      "servicos": ["Consulta psiquiátrica", "Avaliação diagnóstica", "Acompanhamento de saúde mental"],
+      "servicos": [
+        "Consulta psiquiátrica",
+        "Avaliação diagnóstica",
+        "Acompanhamento de saúde mental"
+      ],
+      "atendimento": [
+        "Teleconsulta",
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português",
+        "Inglês"
+      ],
+      "horarios": "Seg a qui, 10h às 19h",
+      "preco_consulta": 190,
+      "atende_online": true,
+      "aceita_convenio": false,
       "whatsapp": "5511900000005",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p006",
+      "slug": "thiago-nogueira-clinica-geral",
+      "nome": "Dr. Thiago Nogueira",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Clínica Geral",
+      "especialidade_slug": "clinica-geral",
+      "cidade": "Rio de Janeiro",
+      "cidade_slug": "rio-de-janeiro-rj",
+      "bairro": "Copacabana",
+      "estado": "RJ",
+      "lat": -22.9711,
+      "lng": -43.1822,
+      "registro": "CRM/RJ 000006",
+      "formacao": "UFF — Residência em Clínica Médica",
+      "ano_formacao": 2024,
+      "descricao": "Clínico geral com foco em check-up, acompanhamento de doenças crônicas e orientação preventiva para adultos.",
+      "servicos": [
+        "Consulta clínica",
+        "Check-up anual",
+        "Acompanhamento de hipertensão e diabetes"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 8h às 17h",
+      "preco_consulta": 150,
+      "atende_online": true,
+      "aceita_convenio": true,
+      "whatsapp": "5521900000006",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p007",
+      "slug": "fernanda-reis-ginecologia",
+      "nome": "Dra. Fernanda Reis",
+      "avatar": "👩‍⚕️",
+      "especialidade": "Ginecologia e Obstetrícia",
+      "especialidade_slug": "ginecologia",
+      "cidade": "São Paulo",
+      "cidade_slug": "sao-paulo-sp",
+      "bairro": "Moema",
+      "estado": "SP",
+      "lat": -23.6019,
+      "lng": -46.665,
+      "registro": "CRM/SP 000007",
+      "formacao": "Unicamp — Residência em Ginecologia e Obstetrícia",
+      "ano_formacao": 2024,
+      "descricao": "Ginecologista e obstetra com atenção ao pré-natal de baixo risco e saúde da mulher em todas as fases.",
+      "servicos": [
+        "Consulta ginecológica",
+        "Pré-natal",
+        "Planejamento familiar"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português",
+        "Inglês"
+      ],
+      "horarios": "Seg a sex, 9h às 18h",
+      "preco_consulta": 230,
+      "atende_online": true,
+      "aceita_convenio": true,
+      "whatsapp": "5511900000007",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p008",
+      "slug": "bruno-tavares-neurologia",
+      "nome": "Dr. Bruno Tavares",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Neurologia",
+      "especialidade_slug": "neurologia",
+      "cidade": "Curitiba",
+      "cidade_slug": "curitiba-pr",
+      "bairro": "Batel",
+      "estado": "PR",
+      "lat": -25.44,
+      "lng": -49.287,
+      "registro": "CRM/PR 000008",
+      "formacao": "UFPR — Residência em Neurologia",
+      "ano_formacao": 2025,
+      "descricao": "Neurologista clínico com interesse em cefaleias, epilepsia e distúrbios do sono.",
+      "servicos": [
+        "Consulta neurológica",
+        "Investigação de cefaleia",
+        "Avaliação de distúrbios do sono"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Ter a sex, 8h às 16h",
+      "preco_consulta": 240,
+      "atende_online": true,
+      "aceita_convenio": false,
+      "whatsapp": "5541900000008",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p009",
+      "slug": "larissa-duarte-nutricao",
+      "nome": "Dra. Larissa Duarte",
+      "avatar": "👩‍⚕️",
+      "especialidade": "Nutrição",
+      "especialidade_slug": "nutricao",
+      "cidade": "Recife",
+      "cidade_slug": "recife-pe",
+      "bairro": "Boa Viagem",
+      "estado": "PE",
+      "lat": -8.12,
+      "lng": -34.9,
+      "registro": "CRN-6 000009",
+      "formacao": "UFPE — Especialização em Nutrição Clínica",
+      "ano_formacao": 2024,
+      "descricao": "Nutricionista clínica com foco em reeducação alimentar, saúde metabólica e acompanhamento contínuo.",
+      "servicos": [
+        "Consulta nutricional",
+        "Plano alimentar individualizado",
+        "Retorno de acompanhamento"
+      ],
+      "atendimento": [
+        "Teleconsulta",
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 8h às 19h",
+      "preco_consulta": 140,
+      "atende_online": true,
+      "aceita_convenio": false,
+      "whatsapp": "5581900000009",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p010",
+      "slug": "vinicius-prado-psicologia",
+      "nome": "Dr. Vinícius Prado",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Psicologia",
+      "especialidade_slug": "psicologia",
+      "cidade": "Porto Alegre",
+      "cidade_slug": "porto-alegre-rs",
+      "bairro": "Moinhos de Vento",
+      "estado": "RS",
+      "lat": -30.025,
+      "lng": -51.203,
+      "registro": "CRP 07/000010",
+      "formacao": "UFRGS — Especialização em Terapia Cognitivo-Comportamental",
+      "ano_formacao": 2023,
+      "descricao": "Psicólogo clínico com abordagem cognitivo-comportamental para ansiedade, estresse e transições de carreira.",
+      "servicos": [
+        "Psicoterapia individual",
+        "Sessão de acolhimento",
+        "Acompanhamento online"
+      ],
+      "atendimento": [
+        "Teleconsulta",
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português",
+        "Inglês"
+      ],
+      "horarios": "Seg a sex, 9h às 20h",
+      "preco_consulta": 160,
+      "atende_online": true,
+      "aceita_convenio": false,
+      "whatsapp": "5551900000010",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p011",
+      "slug": "camila-ferreira-fisioterapia",
+      "nome": "Dra. Camila Ferreira",
+      "avatar": "👩‍⚕️",
+      "especialidade": "Fisioterapia",
+      "especialidade_slug": "fisioterapia",
+      "cidade": "Belo Horizonte",
+      "cidade_slug": "belo-horizonte-mg",
+      "bairro": "Buritis",
+      "estado": "MG",
+      "lat": -19.97,
+      "lng": -43.976,
+      "registro": "CREFITO-4 000011",
+      "formacao": "PUC Minas — Especialização em Fisioterapia Ortopédica",
+      "ano_formacao": 2024,
+      "descricao": "Fisioterapeuta com atuação em reabilitação ortopédica, pós-operatório e dores crônicas.",
+      "servicos": [
+        "Avaliação fisioterapêutica",
+        "Reabilitação ortopédica",
+        "Atendimento domiciliar"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Domiciliar"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sáb, 7h às 19h",
+      "preco_consulta": 120,
+      "atende_online": false,
+      "aceita_convenio": true,
+      "whatsapp": "5531900000011",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p012",
+      "slug": "eduardo-salles-oftalmologia",
+      "nome": "Dr. Eduardo Salles",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Oftalmologia",
+      "especialidade_slug": "oftalmologia",
+      "cidade": "São Paulo",
+      "cidade_slug": "sao-paulo-sp",
+      "bairro": "Tatuapé",
+      "estado": "SP",
+      "lat": -23.5405,
+      "lng": -46.576,
+      "registro": "CRM/SP 000012",
+      "formacao": "Santa Casa SP — Residência em Oftalmologia",
+      "ano_formacao": 2025,
+      "descricao": "Oftalmologista com foco em consultas de rotina, exames de refração e saúde ocular preventiva.",
+      "servicos": [
+        "Consulta oftalmológica",
+        "Exame de refração",
+        "Avaliação de fundo de olho"
+      ],
+      "atendimento": [
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 8h às 17h",
+      "preco_consulta": 210,
+      "atende_online": false,
+      "aceita_convenio": true,
+      "whatsapp": "5511900000012",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p013",
+      "slug": "patricia-amorim-odontologia",
+      "nome": "Dra. Patrícia Amorim",
+      "avatar": "👩‍⚕️",
+      "especialidade": "Odontologia",
+      "especialidade_slug": "odontologia",
+      "cidade": "Rio de Janeiro",
+      "cidade_slug": "rio-de-janeiro-rj",
+      "bairro": "Méier",
+      "estado": "RJ",
+      "lat": -22.9027,
+      "lng": -43.2786,
+      "registro": "CRO/RJ 000013",
+      "formacao": "UFRJ — Especialização em Dentística",
+      "ano_formacao": 2024,
+      "descricao": "Cirurgiã-dentista com atendimento em clínica geral, prevenção e estética dental conservadora.",
+      "servicos": [
+        "Consulta odontológica",
+        "Limpeza e profilaxia",
+        "Restauração"
+      ],
+      "atendimento": [
+        "Presencial"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 9h às 19h",
+      "preco_consulta": 130,
+      "atende_online": false,
+      "aceita_convenio": true,
+      "whatsapp": "5521900000013",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p014",
+      "slug": "henrique-barros-endocrinologia",
+      "nome": "Dr. Henrique Barros",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Endocrinologia",
+      "especialidade_slug": "endocrinologia",
+      "cidade": "Curitiba",
+      "cidade_slug": "curitiba-pr",
+      "bairro": "Água Verde",
+      "estado": "PR",
+      "lat": -25.456,
+      "lng": -49.283,
+      "registro": "CRM/PR 000014",
+      "formacao": "UFPR — Residência em Endocrinologia",
+      "ano_formacao": 2025,
+      "descricao": "Endocrinologista com foco em diabetes, tireoide e acompanhamento de obesidade.",
+      "servicos": [
+        "Consulta endocrinológica",
+        "Acompanhamento de diabetes",
+        "Avaliação de tireoide"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg, ter e qui, 8h às 15h",
+      "preco_consulta": 220,
+      "atende_online": true,
+      "aceita_convenio": false,
+      "whatsapp": "5541900000014",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p015",
+      "slug": "renata-coelho-pediatria",
+      "nome": "Dra. Renata Coelho",
+      "avatar": "👩‍⚕️",
+      "especialidade": "Pediatria",
+      "especialidade_slug": "pediatria",
+      "cidade": "Recife",
+      "cidade_slug": "recife-pe",
+      "bairro": "Casa Forte",
+      "estado": "PE",
+      "lat": -8.033,
+      "lng": -34.908,
+      "registro": "CRM/PE 000015",
+      "formacao": "UFPE — Residência em Pediatria",
+      "ano_formacao": 2025,
+      "descricao": "Pediatra com atenção ao acompanhamento do crescimento, puericultura e orientação a famílias.",
+      "servicos": [
+        "Consulta pediátrica",
+        "Puericultura",
+        "Orientação de aleitamento"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português"
+      ],
+      "horarios": "Seg a sex, 8h às 17h",
+      "preco_consulta": 170,
+      "atende_online": true,
+      "aceita_convenio": true,
+      "whatsapp": "5581900000015",
+      "ativo": true,
+      "plano": "gratuito"
+    },
+    {
+      "id": "p016",
+      "slug": "gustavo-antunes-clinica-geral",
+      "nome": "Dr. Gustavo Antunes",
+      "avatar": "👨‍⚕️",
+      "especialidade": "Clínica Geral",
+      "especialidade_slug": "clinica-geral",
+      "cidade": "Porto Alegre",
+      "cidade_slug": "porto-alegre-rs",
+      "bairro": "Menino Deus",
+      "estado": "RS",
+      "lat": -30.057,
+      "lng": -51.221,
+      "registro": "CRM/RS 000016",
+      "formacao": "UFRGS — Residência em Clínica Médica",
+      "ano_formacao": 2024,
+      "descricao": "Clínico geral com atendimento amplo a adultos, foco em prevenção e encaminhamento responsável.",
+      "servicos": [
+        "Consulta clínica",
+        "Check-up preventivo",
+        "Renovação de receitas"
+      ],
+      "atendimento": [
+        "Presencial",
+        "Teleconsulta"
+      ],
+      "idiomas": [
+        "Português",
+        "Espanhol"
+      ],
+      "horarios": "Seg a sex, 8h às 18h",
+      "preco_consulta": 150,
+      "atende_online": true,
+      "aceita_convenio": true,
+      "whatsapp": "5551900000016",
       "ativo": true,
       "plano": "gratuito"
     }

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profissionais de saúde — Busque por especialidade, cidade e bairro | Medicaralia</title>
+  <meta name="description" content="Encontre médicos, dentistas, psicólogos, nutricionistas e outros profissionais de saúde por especialidade, cidade e bairro. Veja no mapa e fale direto pelo WhatsApp." />
+  <link rel="canonical" href="https://medicaralia.com.br/profissionais/" />
+  <link rel="stylesheet" href="/assets/mk.css" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1a4f72" />
+</head>
+<body>
+
+<div class="mk-demo-bar" role="status">
+  <div class="mk-wrap">
+    <strong>Prévia do site.</strong> Os profissionais exibidos são fictícios, criados apenas para demonstrar o funcionamento. Nenhum é uma pessoa real e nenhum contato é válido.
+  </div>
+</div>
+
+<header class="mk-header">
+  <div class="mk-wrap">
+    <div class="mk-header-inner">
+      <a href="/" class="mk-logo" aria-label="Medicaralia — Página inicial">
+        <div class="mk-logo-icon" aria-hidden="true">M</div>
+        Medic<span class="mk-logo-accent">aralia</span>
+      </a>
+      <nav class="mk-nav" aria-label="Navegação principal">
+        <a href="/" class="mk-nav-link">Início</a>
+        <a href="/profissionais/" class="mk-nav-link" aria-current="page">Profissionais</a>
+        <a href="/sobre/" class="mk-nav-link">Sobre</a>
+      </nav>
+      <a href="/cadastro/" class="mk-btn mk-btn-primary">Cadastre-se grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="mk-pagebar">
+  <div class="mk-wrap">
+    <nav class="mk-crumb" aria-label="Você está em">
+      <a href="/">Início</a>
+      <span aria-hidden="true">›</span>
+      <span>Profissionais</span>
+    </nav>
+    <h1 id="dir-titulo">Profissionais de saúde</h1>
+    <p id="dir-subtitulo">Filtre por especialidade, cidade e bairro. Veja a localização no mapa e fale direto com o profissional.</p>
+  </div>
+</div>
+
+<main class="mk-wrap">
+  <div class="mk-dir">
+
+    <!-- Filtros -->
+    <aside class="mk-filters" aria-label="Filtros de busca">
+      <h2>Filtrar</h2>
+
+      <div class="mk-filter-group">
+        <label for="f-q">Buscar</label>
+        <input type="search" id="f-q" placeholder="Nome, especialidade, serviço…" autocomplete="off" />
+      </div>
+
+      <div class="mk-filter-group">
+        <label for="f-esp">Especialidade</label>
+        <select id="f-esp"><option value="">Todas</option></select>
+      </div>
+
+      <div class="mk-filter-group">
+        <label for="f-cidade">Cidade</label>
+        <select id="f-cidade"><option value="">Todas</option></select>
+      </div>
+
+      <div class="mk-filter-group">
+        <label for="f-bairro">Bairro</label>
+        <select id="f-bairro"><option value="">Todos</option></select>
+      </div>
+
+      <div class="mk-filter-group">
+        <label id="lbl-modalidade">Modalidade</label>
+        <div role="group" aria-labelledby="lbl-modalidade">
+          <label class="mk-filter-check"><input type="checkbox" id="f-online" /> Atende por teleconsulta</label>
+          <label class="mk-filter-check"><input type="checkbox" id="f-convenio" /> Aceita convênio</label>
+        </div>
+      </div>
+
+      <button type="button" class="mk-filter-reset" id="f-limpar">Limpar filtros</button>
+    </aside>
+
+    <!-- Resultados -->
+    <section aria-labelledby="dir-titulo">
+      <div class="mk-chips" id="chips" aria-live="polite"></div>
+
+      <div class="mk-dir-toolbar">
+        <p class="mk-dir-count" id="contagem" role="status" aria-live="polite">Carregando profissionais…</p>
+        <label class="mk-visually-hidden" for="ordenar">Ordenar resultados</label>
+        <select class="mk-dir-sort" id="ordenar">
+          <option value="relevancia">Ordenar: padrão</option>
+          <option value="nome">Nome (A–Z)</option>
+          <option value="especialidade">Especialidade</option>
+          <option value="preco">Menor valor de consulta</option>
+        </select>
+      </div>
+
+      <div class="mk-dir-list" id="lista">
+        <div class="mk-skeleton"></div>
+        <div class="mk-skeleton"></div>
+        <div class="mk-skeleton"></div>
+      </div>
+    </section>
+
+    <!-- Mapa -->
+    <aside class="mk-dir-map" aria-label="Mapa dos profissionais">
+      <div class="mk-map-card">
+        <div class="mk-map-head">
+          <div>
+            <h2>Onde eles atendem</h2>
+            <p id="map-legenda">Localização aproximada por bairro</p>
+          </div>
+          <button type="button" class="mk-map-open" id="abrir-mapa">Ampliar</button>
+        </div>
+        <div class="mk-map-canvas" id="mapa-mini">Carregando mapa…</div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- Modal do mapa -->
+<div class="mk-map-modal" id="map-modal" role="dialog" aria-modal="true" aria-labelledby="map-modal-title" aria-hidden="true">
+  <div class="mk-map-modal-backdrop" data-map-close="backdrop"></div>
+  <div class="mk-map-modal-box">
+    <div class="mk-map-modal-head">
+      <h2 id="map-modal-title">Mapa dos profissionais</h2>
+      <button type="button" class="mk-map-close" id="fechar-mapa" aria-label="Fechar mapa">&times;</button>
+    </div>
+    <div class="mk-map-modal-canvas" id="mapa-grande"></div>
+  </div>
+</div>
+
+<footer class="mk-footer" aria-label="Rodapé Medicaralia">
+  <div class="mk-wrap">
+    <div class="mk-footer-grid">
+      <div>
+        <div class="mk-footer-logo">
+          <div class="mk-logo-icon" aria-hidden="true">M</div>
+          Medic<span class="mk-logo-accent">aralia</span>
+        </div>
+        <p class="mk-footer-desc">Visibilidade acessível para profissionais de saúde em início de carreira.</p>
+        <p class="mk-footer-aviso">As informações desta página são de caráter informativo e não substituem uma consulta profissional.</p>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para pacientes</h4>
+        <div class="mk-footer-links">
+          <a href="/profissionais/">Buscar profissionais</a>
+          <a href="/profissionais/?online=1">Teleconsulta</a>
+          <a href="/sobre/">Sobre a Medicaralia</a>
+        </div>
+      </div>
+      <div class="mk-footer-col">
+        <h4>Para profissionais</h4>
+        <div class="mk-footer-links">
+          <a href="/cadastro/">Cadastrar meu perfil</a>
+          <a href="/sobre/#planos">Planos</a>
+        </div>
+      </div>
+    </div>
+    <div class="mk-footer-bottom">
+      <span>&copy; <span data-mk-ano>2026</span> Medicaralia · medicaralia.com.br</span>
+      <span>Feito para quem está começando na saúde.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/mk.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var estado = { base: null, filtros: {}, ordem: 'relevancia', mapaMini: null, mapaGrande: null, ativo: null };
+
+  var el = {
+    q: document.getElementById('f-q'),
+    esp: document.getElementById('f-esp'),
+    cidade: document.getElementById('f-cidade'),
+    bairro: document.getElementById('f-bairro'),
+    online: document.getElementById('f-online'),
+    convenio: document.getElementById('f-convenio'),
+    limpar: document.getElementById('f-limpar'),
+    ordenar: document.getElementById('ordenar'),
+    lista: document.getElementById('lista'),
+    contagem: document.getElementById('contagem'),
+    chips: document.getElementById('chips'),
+    titulo: document.getElementById('dir-titulo'),
+    mapaMini: document.getElementById('mapa-mini'),
+    mapaGrande: document.getElementById('mapa-grande'),
+    modal: document.getElementById('map-modal'),
+    abrirMapa: document.getElementById('abrir-mapa'),
+    fecharMapa: document.getElementById('fechar-mapa'),
+    legenda: document.getElementById('map-legenda')
+  };
+
+  /* ---------- Filtros vindos da URL ---------- */
+  function lerURL() {
+    return {
+      q: MK.qs('q'),
+      especialidade: MK.qs('especialidade'),
+      cidade: MK.qs('cidade'),
+      bairro: MK.qs('bairro'),
+      online: MK.qs('online') === '1',
+      convenio: MK.qs('convenio') === '1'
+    };
+  }
+
+  function escreverURL() {
+    var p = new URLSearchParams();
+    var f = estado.filtros;
+    if (f.q) p.set('q', f.q);
+    if (f.especialidade) p.set('especialidade', f.especialidade);
+    if (f.cidade) p.set('cidade', f.cidade);
+    if (f.bairro) p.set('bairro', f.bairro);
+    if (f.online) p.set('online', '1');
+    if (f.convenio) p.set('convenio', '1');
+    var qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  }
+
+  /* ---------- Preenchimento dos selects ---------- */
+  function preencherSelects() {
+    estado.base.especialidades.forEach(function (e) {
+      var o = document.createElement('option');
+      o.value = e.slug;
+      o.textContent = e.nome + (e.total ? ' (' + e.total + ')' : '');
+      el.esp.appendChild(o);
+    });
+    estado.base.cidades.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c.slug;
+      o.textContent = c.nome + '/' + c.estado + (c.total ? ' (' + c.total + ')' : '');
+      el.cidade.appendChild(o);
+    });
+  }
+
+  function atualizarBairros() {
+    var atual = estado.filtros.bairro;
+    el.bairro.innerHTML = '<option value="">Todos</option>';
+    var cidade = estado.base.cidades.filter(function (c) { return c.slug === estado.filtros.cidade; })[0];
+
+    if (!cidade) {
+      el.bairro.disabled = true;
+      estado.filtros.bairro = '';
+      return;
+    }
+    el.bairro.disabled = false;
+
+    // apenas bairros que realmente têm profissionais
+    var comProf = {};
+    estado.base.profissionais.forEach(function (p) {
+      if (p.cidade_slug === cidade.slug) comProf[p.bairro] = true;
+    });
+
+    cidade.bairros.forEach(function (b) {
+      var o = document.createElement('option');
+      o.value = b;
+      o.textContent = b + (comProf[b] ? '' : ' — sem profissionais');
+      if (!comProf[b]) o.disabled = true;
+      el.bairro.appendChild(o);
+    });
+
+    el.bairro.value = comProf[atual] ? atual : '';
+    estado.filtros.bairro = el.bairro.value;
+  }
+
+  /* ---------- Chips de filtro ativo ---------- */
+  function nomeEsp(slug) {
+    var e = estado.base.especialidades.filter(function (x) { return x.slug === slug; })[0];
+    return e ? e.nome : slug;
+  }
+  function nomeCidade(slug) {
+    var c = estado.base.cidades.filter(function (x) { return x.slug === slug; })[0];
+    return c ? c.nome + '/' + c.estado : slug;
+  }
+
+  function renderChips() {
+    var f = estado.filtros;
+    var itens = [];
+    if (f.q) itens.push({ chave: 'q', texto: '“' + f.q + '”' });
+    if (f.especialidade) itens.push({ chave: 'especialidade', texto: nomeEsp(f.especialidade) });
+    if (f.cidade) itens.push({ chave: 'cidade', texto: nomeCidade(f.cidade) });
+    if (f.bairro) itens.push({ chave: 'bairro', texto: f.bairro });
+    if (f.online) itens.push({ chave: 'online', texto: 'Teleconsulta' });
+    if (f.convenio) itens.push({ chave: 'convenio', texto: 'Aceita convênio' });
+
+    el.chips.innerHTML = itens.map(function (i) {
+      return '<span class="mk-chip">' + MK.esc(i.texto) +
+        '<button type="button" data-limpar="' + i.chave + '" aria-label="Remover filtro ' + MK.esc(i.texto) + '">&times;</button></span>';
+    }).join('');
+  }
+
+  /* ---------- Render dos resultados ---------- */
+  function cardResultado(p) {
+    var tags = [];
+    if (p.atende_online) tags.push('<span class="mk-tag mk-tag--green">Teleconsulta</span>');
+    if (p.aceita_convenio) tags.push('<span class="mk-tag">Aceita convênio</span>');
+    if (p.preco_consulta) tags.push('<span class="mk-tag">' + MK.formatarPreco(p.preco_consulta) + '</span>');
+
+    var perfil = '/profissional/?p=' + encodeURIComponent(p.slug);
+
+    return '' +
+      '<article class="mk-result" data-slug="' + MK.esc(p.slug) + '">' +
+        '<div class="mk-result-avatar" aria-hidden="true">' + MK.esc(p.avatar || '🩺') + '</div>' +
+        '<div class="mk-result-body">' +
+          '<h3 class="mk-result-name"><a href="' + perfil + '">' + MK.esc(p.nome) + '</a></h3>' +
+          '<p class="mk-result-esp">' + MK.esc(p.especialidade) + '</p>' +
+          (p.registro ? '<p class="mk-result-registro">' + MK.esc(p.registro) + '</p>' : '') +
+          '<p class="mk-result-local">📍 ' + MK.esc(p.bairro) + ', ' + MK.esc(p.cidade) + '/' + MK.esc(p.estado) + '</p>' +
+          '<p class="mk-result-desc">' + MK.esc(p.descricao) + '</p>' +
+          '<div class="mk-prof-tags">' + tags.join('') + '</div>' +
+        '</div>' +
+        '<div class="mk-result-side">' +
+          '<a class="mk-btn mk-btn-primary" href="' + perfil + '">Ver perfil</a>' +
+          '<a class="mk-btn mk-btn-wa" href="' + MK.whatsappURL(p.whatsapp, MK.mensagemProfissional(p)) + '" target="_blank" rel="noopener">WhatsApp</a>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function render() {
+    var f = estado.filtros;
+    var resultados = MK.ordenar(MK.filtrar(estado.base.profissionais, f), estado.ordem);
+
+    el.contagem.innerHTML = resultados.length
+      ? '<strong>' + resultados.length + '</strong> ' + (resultados.length === 1 ? 'profissional encontrado' : 'profissionais encontrados')
+      : 'Nenhum profissional encontrado';
+
+    if (!resultados.length) {
+      el.lista.innerHTML =
+        '<div class="mk-empty">' +
+          '<div class="mk-empty-icon" aria-hidden="true">🔍</div>' +
+          '<h3>Nenhum profissional com esses filtros</h3>' +
+          '<p>Ainda estamos crescendo. Tente ampliar a busca ou remover algum filtro.</p>' +
+          '<button type="button" class="mk-btn mk-btn-primary" id="empty-limpar">Limpar filtros</button>' +
+        '</div>';
+      var b = document.getElementById('empty-limpar');
+      if (b) b.addEventListener('click', limparTudo);
+    } else {
+      el.lista.innerHTML = resultados.map(cardResultado).join('');
+      el.lista.querySelectorAll('.mk-result').forEach(function (card) {
+        card.addEventListener('mouseenter', function () { destacarNoMapa(card.dataset.slug); });
+      });
+    }
+
+    var comCoord = resultados.filter(function (p) { return p.lat && p.lng; }).length;
+    el.legenda.textContent = comCoord
+      ? comCoord + (comCoord === 1 ? ' local no mapa' : ' locais no mapa') + ' · posição aproximada por bairro'
+      : 'Sem locais para exibir';
+
+    renderChips();
+    escreverURL();
+    atualizarMapas(resultados);
+    return resultados;
+  }
+
+  /* ---------- Mapas ---------- */
+  function atualizarMapas(resultados) {
+    if (!window.L) return;
+
+    if (estado.mapaMini) { estado.mapaMini.mapa.remove(); estado.mapaMini = null; }
+    el.mapaMini.innerHTML = '';
+    estado.mapaMini = MK.montarMapa(el.mapaMini, resultados, {
+      padding: [26, 26],
+      aoClicar: function (p) { rolarAteCard(p.slug); }
+    });
+
+    if (estado.mapaGrande) { estado.mapaGrande.mapa.remove(); estado.mapaGrande = null; }
+    if (el.modal.classList.contains('is-open')) montarMapaGrande(resultados);
+  }
+
+  function montarMapaGrande(resultados) {
+    el.mapaGrande.innerHTML = '';
+    estado.mapaGrande = MK.montarMapa(el.mapaGrande, resultados, { padding: [40, 40] });
+    setTimeout(function () {
+      if (estado.mapaGrande) estado.mapaGrande.mapa.invalidateSize();
+    }, 90);
+  }
+
+  function destacarNoMapa(slug) {
+    if (!estado.mapaMini) return;
+    estado.mapaMini.marcadores.forEach(function (m) {
+      m.marker.setIcon(MK.pinIcon(m.prof.slug === slug));
+    });
+  }
+
+  function rolarAteCard(slug) {
+    var card = el.lista.querySelector('[data-slug="' + slug + '"]');
+    if (!card) return;
+    el.lista.querySelectorAll('.mk-result').forEach(function (c) { c.classList.remove('is-active'); });
+    card.classList.add('is-active');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function abrirModal() {
+    el.modal.classList.add('is-open');
+    el.modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    MK.carregarLeaflet().then(function () {
+      montarMapaGrande(MK.ordenar(MK.filtrar(estado.base.profissionais, estado.filtros), estado.ordem));
+    }).catch(function (err) {
+      el.mapaGrande.innerHTML = '<div class="mk-empty" style="border:none;background:none">' +
+        '<div class="mk-empty-icon" aria-hidden="true">🗺️</div>' +
+        '<h3>Mapa indisponível</h3><p>' + MK.esc(err.message) + ' Tente novamente em instantes.</p></div>';
+    });
+  }
+
+  function fecharModal() {
+    el.modal.classList.remove('is-open');
+    el.modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  /* ---------- Eventos ---------- */
+  function limparTudo() {
+    estado.filtros = { q: '', especialidade: '', cidade: '', bairro: '', online: false, convenio: false };
+    el.q.value = ''; el.esp.value = ''; el.cidade.value = '';
+    el.online.checked = false; el.convenio.checked = false;
+    atualizarBairros();
+    render();
+  }
+
+  var debounce;
+  function ligarEventos() {
+    el.q.addEventListener('input', function () {
+      clearTimeout(debounce);
+      debounce = setTimeout(function () { estado.filtros.q = el.q.value.trim(); render(); }, 220);
+    });
+    el.esp.addEventListener('change', function () { estado.filtros.especialidade = el.esp.value; render(); });
+    el.cidade.addEventListener('change', function () {
+      estado.filtros.cidade = el.cidade.value;
+      atualizarBairros();
+      render();
+    });
+    el.bairro.addEventListener('change', function () { estado.filtros.bairro = el.bairro.value; render(); });
+    el.online.addEventListener('change', function () { estado.filtros.online = el.online.checked; render(); });
+    el.convenio.addEventListener('change', function () { estado.filtros.convenio = el.convenio.checked; render(); });
+    el.ordenar.addEventListener('change', function () { estado.ordem = el.ordenar.value; render(); });
+    el.limpar.addEventListener('click', limparTudo);
+
+    el.chips.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-limpar]');
+      if (!btn) return;
+      var chave = btn.dataset.limpar;
+      if (chave === 'online' || chave === 'convenio') {
+        estado.filtros[chave] = false;
+        el[chave].checked = false;
+      } else {
+        estado.filtros[chave] = '';
+        if (chave === 'q') el.q.value = '';
+        if (chave === 'especialidade') el.esp.value = '';
+        if (chave === 'cidade') { el.cidade.value = ''; atualizarBairros(); }
+        if (chave === 'bairro') el.bairro.value = '';
+      }
+      render();
+    });
+
+    el.abrirMapa.addEventListener('click', abrirModal);
+    el.fecharMapa.addEventListener('click', fecharModal);
+    el.modal.addEventListener('click', function (e) {
+      if (e.target.dataset && e.target.dataset.mapClose === 'backdrop') fecharModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && el.modal.classList.contains('is-open')) fecharModal();
+    });
+  }
+
+  /* ---------- Início ---------- */
+  MK.carregarBase().then(function (base) {
+    estado.base = base;
+    estado.filtros = lerURL();
+
+    preencherSelects();
+    el.q.value = estado.filtros.q;
+    el.esp.value = estado.filtros.especialidade;
+    el.cidade.value = estado.filtros.cidade;
+    el.online.checked = estado.filtros.online;
+    el.convenio.checked = estado.filtros.convenio;
+    atualizarBairros();
+    el.bairro.value = estado.filtros.bairro;
+
+    ligarEventos();
+    render();
+
+    // título contextual
+    if (estado.filtros.especialidade) {
+      var n = nomeEsp(estado.filtros.especialidade);
+      el.titulo.textContent = n + (estado.filtros.cidade ? ' em ' + nomeCidade(estado.filtros.cidade) : '');
+      document.title = n + ' — Medicaralia';
+    }
+
+    // mapa carrega quando entra em viewport
+    var carregar = function () {
+      MK.carregarLeaflet()
+        .then(function () { render(); })
+        .catch(function (err) {
+          el.mapaMini.textContent = err.message + ' A lista de profissionais continua funcionando.';
+        });
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (en) {
+          if (en.isIntersecting) { carregar(); io.disconnect(); }
+        });
+      }, { rootMargin: '160px' });
+      io.observe(el.mapaMini);
+    } else {
+      carregar();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
