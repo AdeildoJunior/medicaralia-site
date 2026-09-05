@@ -2,7 +2,23 @@
 
 Plataforma acessível de visibilidade e agendamento para profissionais de saúde em início de carreira.
 
-**Domínio:** medicaralia.com.br · **Deploy:** GitHub Pages (publica apenas `site/`)
+**No ar:** https://adeildojunior.github.io/medicaralia-site/
+**Domínio final:** medicaralia.com.br (DNS ainda não apontado)
+**Deploy:** GitHub Pages via Actions, publica apenas `site/` a cada push na `main`
+
+O site funciona tanto na raiz de um domínio quanto em subdiretório: `mk.js` deriva a
+raiz do próprio caminho do script e as páginas usam caminhos relativos.
+
+### Para ligar o domínio próprio
+
+1. No Registro.br, criar os registros DNS de `medicaralia.com.br`:
+   - `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `CNAME` de `www` → `adeildojunior.github.io`
+2. Esperar a propagação (`dig +short A medicaralia.com.br` deve responder).
+3. Só então configurar o domínio no Pages:
+   `gh api -X PUT repos/AdeildoJunior/medicaralia-site/pages -f cname=medicaralia.com.br`
+
+Configurar o passo 3 antes do DNS derruba o acesso pelo endereço `github.io`.
 
 ## Estrutura
 
